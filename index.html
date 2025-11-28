@@ -148,6 +148,19 @@
             border-color: var(--secondary-blue);
         }
 
+        .file-preview {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .file-preview img {
+            max-width: 150px;
+            max-height: 150px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            object-fit: contain;
+        }
+
         .submit-btn {
             display: block;
             width: 100%;
@@ -646,7 +659,7 @@
 
     <script>
         // ✅ TESTED GOOGLE SCRIPT URL
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyuyde8r-M7IPCymNHeH4Cb4V4GXJYzC_tLl0r74Z5Y7Gw3Ef9RhvmHkPotjHx5LErQLA/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxi7nM2XmxAbsf0MEEo5qp6jUZeYU0MGh1LdvjG7IhK5eyuDZAROPuZc2gWgcideIQX0w/exec';
 
         // Show status message
         function showStatus(message, type) {
@@ -693,6 +706,9 @@
                     reader.onload = function(e) {
                         const img = document.createElement('img');
                         img.src = e.target.result;
+                        // Set maximum dimensions for the preview image
+                        img.style.maxWidth = '150px';
+                        img.style.maxHeight = '150px';
                         preview.appendChild(img);
                     }
                     reader.readAsDataURL(file);
@@ -907,4 +923,3 @@
     </script>
 </body>
 </html>
-
