@@ -982,26 +982,35 @@
 
         console.log('Sending data to Google Sheets:', submissionData);
 
-        // ✅ FIXED: Use this fetch code with error handling
+        // ✅ REMOVE no-cors mode to read response
         const response = await fetch(GOOGLE_SCRIPT_URL, {
             method: 'POST',
-            mode: 'no-cors', // Add this for CORS
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
             body: new URLSearchParams(submissionData)
         });
 
-        // With no-cors mode, we can't read response, so assume success
-        console.log('Request sent successfully');
+        // ✅ Now we can read the response
+        const result = await response.text();
+        console.log('Raw response:', result);
         
-        // Since we can't read response with no-cors, generate ID locally
-        const currentYear = new Date().getFullYear();
-        const tempId = `GCEI-${currentYear}-${Date.now().toString().slice(-6)}`;
-        
-        submissionData.studentId = tempId;
-        showSuccessPage(submissionData);
-        showStatus('✅ Form submitted successfully!', 'success');
+        let data;
+        try {
+            data = JSON.parse(result);
+        } catch (parseError) {
+            console.error('JSON parse error:', parseError);
+            throw new Error('Invalid response from server');
+        }
+
+        if (data.status === 'success') {
+            // ✅ Use the actual Student ID from Google Script
+            submissionData.studentId = data.studentId;
+            showSuccessPage(submissionData);
+            showStatus('✅ Data successfully saved to Google Sheets!', 'success');
+        } else {
+            throw new Error(data.message || 'Unknown error from server');
+        }
 
     } catch (error) {
         console.error('Submission error:', error);
@@ -1013,15 +1022,21 @@
             <strong>Check browser console for details</strong>
         `;
         
-        // Fallback
+        // Fallback with proper sequential ID
         const formData = getFormData();
         const currentYear = new Date().getFullYear();
-        const tempId = `GCEI-${currentYear}-${Date.now().toString().slice(-6)}`;
+        
+        // Simple counter for fallback (starts from 2001)
+        let fallbackCounter = localStorage.getItem('fallbackCounter') || 2001;
+        const tempId = `GCEI-${currentYear}-${fallbackCounter}`;
+        fallbackCounter++;
+        localStorage.setItem('fallbackCounter', fallbackCounter);
+        
         formData.studentId = tempId;
         formData.timestamp = new Date().toLocaleString('hi-IN');
         
         showSuccessPage(formData);
-        showStatus('⚠️ Form submitted successfully!', 'success');
+        showStatus('⚠️ Form submitted locally. Server connection failed.', 'error');
     }
 }
         function showSuccessPage(formData) {
@@ -1173,4 +1188,5 @@
     </script>
 </body>
 </html>
+
 
