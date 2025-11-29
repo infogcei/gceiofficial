@@ -922,16 +922,19 @@
             
             if (!/^\d{10}$/.test(mobile)) {
                 alert('कृपया 10 अंकों का मोबाइल नंबर दर्ज करें।');
+                document.getElementById('mobile').style.borderColor = 'red';
                 return false;
             }
             
             if (!/^\d{10}$/.test(whatsapp)) {
                 alert('कृपया 10 अंकों का WhatsApp नंबर दर्ज करें।');
+                document.getElementById('whatsapp').style.borderColor = 'red';
                 return false;
             }
 
             if (!isValid) {
                 alert('कृपया सभी आवश्यक फील्ड्स भरें (जिनके आगे * लगा है)');
+                return false;
             }
 
             return isValid;
@@ -942,103 +945,111 @@
             return re.test(email);
         }
 
-        // Generate temporary ID for fallback
-        function generateTempId() {
-            const currentYear = new Date().getFullYear();
-            const timestamp = Date.now().toString().slice(-6);
-            const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
-            return `TEMP-${currentYear}-${timestamp}${random}`;
-        }
-
         async function submitToGoogleSheets() {
-    document.getElementById('loadingSpinner').style.display = 'block';
-    document.getElementById('submitBtn').disabled = true;
-    document.getElementById('submitBtn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            console.log('=== FORM SUBMISSION STARTED ===');
+            document.getElementById('loadingSpinner').style.display = 'block';
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('submitBtn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
 
-    try {
-        const formData = getFormData();
-        
-        // Get payment method
-        const paymentMethod = document.getElementById('upiOption').classList.contains('selected') ? 'UPI' : 'Cash';
-        const transactionId = document.getElementById('transactionId').value;
-        
-        const submissionData = {
-            timestamp: new Date().toLocaleString('hi-IN'),
-            fullName: formData.fullName,
-            fatherName: formData.fatherName,
-            mobile: formData.mobile,
-            whatsapp: formData.whatsapp,
-            gender: formData.gender,
-            dob: formData.dob,
-            address: formData.address,
-            aadhar: formData.aadhar,
-            email: formData.email,
-            course: formData.course,
-            batchTime: formData.batchTime,
-            paymentMethod: paymentMethod,
-            transactionId: transactionId,
-            registrationFee: '99'
-        };
+            try {
+                const formData = getFormData();
+                
+                // Get payment method
+                const paymentMethod = document.getElementById('upiOption').classList.contains('selected') ? 'UPI' : 'Cash';
+                const transactionId = document.getElementById('transactionId').value;
+                
+                const submissionData = {
+                    timestamp: new Date().toLocaleString('hi-IN'),
+                    fullName: formData.fullName,
+                    fatherName: formData.fatherName,
+                    mobile: formData.mobile,
+                    whatsapp: formData.whatsapp,
+                    gender: formData.gender,
+                    dob: formData.dob,
+                    address: formData.address,
+                    aadhar: formData.aadhar,
+                    email: formData.email,
+                    course: formData.course,
+                    batchTime: formData.batchTime,
+                    paymentMethod: paymentMethod,
+                    transactionId: transactionId,
+                    registrationFee: '99'
+                };
 
-        console.log('Sending data to Google Sheets:', submissionData);
+                console.log('📤 Sending data to Google Sheets:', submissionData);
+                console.log('📮 Google Script URL:', GOOGLE_SCRIPT_URL);
 
-        // ✅ REMOVE no-cors mode to read response
-        const response = await fetch(GOOGLE_SCRIPT_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: new URLSearchParams(submissionData)
-        });
+                // ✅ SIMPLE FETCH - No complex options
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams(submissionData)
+                });
 
-        // ✅ Now we can read the response
-        const result = await response.text();
-        console.log('Raw response:', result);
-        
-        let data;
-        try {
-            data = JSON.parse(result);
-        } catch (parseError) {
-            console.error('JSON parse error:', parseError);
-            throw new Error('Invalid response from server');
+                console.log('📥 Response status:', response.status);
+                console.log('📥 Response ok:', response.ok);
+
+                if (!response.ok) {
+                    throw new Error(`Server returned ${response.status}: ${response.statusText}`);
+                }
+
+                const resultText = await response.text();
+                console.log('📥 Raw response text:', resultText);
+
+                let result;
+                try {
+                    result = JSON.parse(resultText);
+                } catch (parseError) {
+                    console.error('❌ JSON parse error:', parseError);
+                    throw new Error('Server returned invalid JSON: ' + resultText);
+                }
+
+                console.log('📥 Parsed response:', result);
+
+                if (result.status === 'success') {
+                    console.log('✅ Server confirmed success');
+                    submissionData.studentId = result.studentId;
+                    showSuccessPage(submissionData);
+                    showStatus('✅ Data successfully saved to Google Sheets!', 'success');
+                } else {
+                    throw new Error(result.message || 'Server returned error status');
+                }
+
+            } catch (error) {
+                console.error('❌ FORM SUBMISSION FAILED:', error);
+                
+                // Show detailed error info
+                document.getElementById('debugInfo').style.display = 'block';
+                document.getElementById('debugInfo').innerHTML = `
+                    <strong>Error Details:</strong><br>
+                    <strong>Message:</strong> ${error.message}<br>
+                    <strong>Time:</strong> ${new Date().toLocaleString()}<br>
+                    <strong>Script URL:</strong> ${GOOGLE_SCRIPT_URL}<br>
+                    <strong>Check browser console (F12) for full details</strong>
+                `;
+                
+                // Fallback - Show success page anyway with local ID
+                const formData = getFormData();
+                const currentYear = new Date().getFullYear();
+                let fallbackCounter = parseInt(localStorage.getItem('fallbackCounter') || '2000');
+                fallbackCounter++;
+                const tempId = `GCEI-${currentYear}-${fallbackCounter}`;
+                localStorage.setItem('fallbackCounter', fallbackCounter.toString());
+                
+                formData.studentId = tempId;
+                formData.timestamp = new Date().toLocaleString('hi-IN');
+                
+                showSuccessPage(formData);
+                showStatus('⚠️ Form submitted (local fallback). Check connection.', 'error');
+                
+                console.log('🔄 Using fallback ID:', tempId);
+            } finally {
+                resetLoadingState();
+            }
         }
 
-        if (data.status === 'success') {
-            // ✅ Use the actual Student ID from Google Script
-            submissionData.studentId = data.studentId;
-            showSuccessPage(submissionData);
-            showStatus('✅ Data successfully saved to Google Sheets!', 'success');
-        } else {
-            throw new Error(data.message || 'Unknown error from server');
-        }
-
-    } catch (error) {
-        console.error('Submission error:', error);
-        
-        document.getElementById('debugInfo').style.display = 'block';
-        document.getElementById('debugInfo').innerHTML = `
-            <strong>Error:</strong> ${error.message}<br>
-            <strong>Time:</strong> ${new Date().toLocaleString()}<br>
-            <strong>Check browser console for details</strong>
-        `;
-        
-        // Fallback with proper sequential ID
-        const formData = getFormData();
-        const currentYear = new Date().getFullYear();
-        
-        // Simple counter for fallback (starts from 2001)
-        let fallbackCounter = localStorage.getItem('fallbackCounter') || 2001;
-        const tempId = `GCEI-${currentYear}-${fallbackCounter}`;
-        fallbackCounter++;
-        localStorage.setItem('fallbackCounter', fallbackCounter);
-        
-        formData.studentId = tempId;
-        formData.timestamp = new Date().toLocaleString('hi-IN');
-        
-        showSuccessPage(formData);
-        showStatus('⚠️ Form submitted locally. Server connection failed.', 'error');
-    }
-}
         function showSuccessPage(formData) {
             document.getElementById('admissionForm').style.display = 'none';
             document.getElementById('successMessage').style.display = 'block';
@@ -1188,5 +1199,3 @@
     </script>
 </body>
 </html>
-
-
