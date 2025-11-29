@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guru Computer Education Institute - Admission Form</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- PDF Generation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         :root {
             --primary-blue: #1a2a6c;
@@ -1065,16 +1068,81 @@
             };
         }
 
-        // PDF Download
+        // PDF Download - FIXED VERSION
         document.getElementById('downloadPdfBtn').addEventListener('click', function() {
+            generateAndDownloadPDF();
+        });
+
+        function generateAndDownloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
             const studentName = document.getElementById('successFullName').textContent;
             const studentId = document.getElementById('studentIdDisplay').textContent.replace('Your Student ID: ', '');
             const course = document.getElementById('successCourse').textContent;
             const batchTime = document.getElementById('successBatchTime').textContent;
             const mobile = document.getElementById('successMobile').textContent;
+            const submissionDate = document.getElementById('submissionDate').textContent;
             
-            alert(`PDF download feature would generate a PDF with:\n\nStudent ID: ${studentId}\nName: ${studentName}\nCourse: ${course}\nBatch: ${batchTime}\nMobile: ${mobile}`);
-        });
+            // Set font and colors
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(20);
+            doc.setTextColor(26, 42, 108); // Primary blue color
+            
+            // Institute Name
+            doc.text("Guru Computer Education Institute", 105, 20, { align: "center" });
+            
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0);
+            doc.setFont("helvetica", "normal");
+            doc.text("Near Police Station, Dagori Road, Bilha, Bilaspur (C.G.)", 105, 28, { align: "center" });
+            doc.text("Phone: 9244240484", 105, 34, { align: "center" });
+            
+            // Title
+            doc.setFontSize(18);
+            doc.setFont("helvetica", "bold");
+            doc.setTextColor(26, 42, 108);
+            doc.text("ADMISSION FORM RECEIPT", 105, 50, { align: "center" });
+            
+            // Student Information
+            doc.setFontSize(12);
+            doc.setFont("helvetica", "bold");
+            doc.text("Student ID:", 20, 70);
+            doc.text("Full Name:", 20, 80);
+            doc.text("Course:", 20, 90);
+            doc.text("Batch Time:", 20, 100);
+            doc.text("Mobile:", 20, 110);
+            doc.text("Submission Date:", 20, 120);
+            
+            doc.setFont("helvetica", "normal");
+            doc.text(studentId, 70, 70);
+            doc.text(studentName, 70, 80);
+            doc.text(course, 70, 90);
+            doc.text(batchTime, 70, 100);
+            doc.text(mobile, 70, 110);
+            doc.text(submissionDate, 70, 120);
+            
+            // Payment Information
+            doc.setFont("helvetica", "bold");
+            doc.text("Registration Fee: ₹99", 20, 140);
+            
+            // Instructions
+            doc.setFontSize(10);
+            doc.text("Next Steps:", 20, 160);
+            doc.text("1. Pay ₹99 registration fee (UPI or at institute)", 20, 170);
+            doc.text("2. Our team will contact you within 24 hours", 20, 180);
+            doc.text("3. Bring original documents to institute", 20, 190);
+            doc.text("4. Complete admission process", 20, 200);
+            doc.text("5. Confirm batch start date", 20, 210);
+            
+            // Footer
+            doc.setFontSize(12);
+            doc.setFont("helvetica", "bold");
+            doc.text("Guru Ke Saath Gyan, Safalta Ki Pehchan", 105, 240, { align: "center" });
+            
+            // Save the PDF
+            doc.save(`GCEI_Admission_${studentId}.pdf`);
+        }
 
         // WhatsApp button functionality
         document.getElementById('whatsappBtn').addEventListener('click', function() {
@@ -1108,5 +1176,3 @@
     </script>
 </body>
 </html>
-
-
