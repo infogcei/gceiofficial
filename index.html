@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- PDF Generation Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         :root {
             --primary-blue: #1a2a6c;
@@ -509,6 +508,38 @@
                 padding: 12px 20px;
             }
         }
+
+        .google-script-setup {
+            background: #e8f4ff;
+            border: 2px solid var(--secondary-blue);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .google-script-setup h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .google-script-setup ol {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .google-script-setup li {
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 14px;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
     </style>
 </head>
 <body>
@@ -525,8 +556,45 @@
             <p>Kripya admission form bhar kar submit karen. Form verify hone par hum aapko jald hi contact karenge.</p>
         </div>
 
+        <!-- Google Script Setup Instructions -->
+        <div class="google-script-setup" id="setupInstructions">
+            <h3><i class="fas fa-cogs"></i> Google Sheets Setup Instructions</h3>
+            <p><strong>Data Google Sheets में नहीं जा रहा है? इन steps को follow करें:</strong></p>
+            <ol>
+                <li>Google Sheets में एक नई spreadsheet बनाएं</li>
+                <li>Tools > Script Editor पर जाएं</li>
+                <li>निम्नलिखित code paste करें:</li>
+                <div class="code-block">
+                    function doPost(e) {<br>
+                    &nbsp;&nbsp;var sheet = SpreadsheetApp.openById('YOUR_SHEET_ID').getActiveSheet();<br>
+                    &nbsp;&nbsp;var data = e.parameter;<br>
+                    &nbsp;&nbsp;var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];<br>
+                    &nbsp;&nbsp;var row = [];<br>
+                    &nbsp;&nbsp;for (var i = 0; i < headers.length; i++) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;row.push(data[headers[i]] || '');<br>
+                    &nbsp;&nbsp;}<br>
+                    &nbsp;&nbsp;sheet.appendRow(row);<br>
+                    &nbsp;&nbsp;return ContentService.createTextOutput(JSON.stringify({result: 'success'})).setMimetype(ContentService.MimeType.JSON);<br>
+                    }
+                </div>
+                <li>YOUR_SHEET_ID को अपनी spreadsheet ID से replace करें</li>
+                <li>Save करें और Deploy > New deployment करें</li>
+                <li>Web app के रूप में deploy करें, Execute as: Me, Who has access: Anyone set करें</li>
+                <li>Generated URL को नीचे दिए गए field में डालें</li>
+            </ol>
+            
+            <div class="form-group">
+                <label for="googleScriptUrl">https://script.google.com/macros/s/AKfycbxn0-O9nu2FLCc88YCeZRNxnpIkL599I1Lo54DVOsbERQ76_TSKjAUuMF_Omh-J2B7DJA/exec:</label>
+                <input type="text" id="googleScriptUrl" placeholder="https://script.google.com/macros/s/..." style="width: 100%;">
+                <button id="saveUrlBtn" class="submit-btn" style="margin-top: 10px; background: var(--secondary-blue);">
+                    <i class="fas fa-save"></i> Save URL
+                </button>
+            </div>
+        </div>
+
         <!-- Status Message -->
         <div class="status-message" id="statusMessage" style="display: none;"></div>
+        
         <!-- Admission Form -->
         <div class="form-container" id="admissionForm">
             <!-- Debug Info -->
@@ -775,11 +843,26 @@
     </div>
 
     <script>
-        // ✅ STEP 1: अपना Google Script URL यहाँ डालें
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxi7nM2XmxAbsf0MEEo5qp6jUZeYU0MGh1LdvjG7IhK5eyuDZAROPuZc2gWgcideIQX0w/exec';
+        // ✅ STEP 1: Google Script URL - यह अब user input से लिया जाएगा
+        let GOOGLE_SCRIPT_URL = localStorage.getItem('googleScriptUrl') || 'https://script.google.com/macros/s/AKfycbxi7nM2XmxAbsf0MEEo5qp6jUZeYU0MGh1LdvjG7IhK5eyuDZAROPuZc2gWgcideIQX0w/exec';
 
         // Student counter - यह localStorage में save होगा
         let studentCounter = localStorage.getItem('studentCounter') ? parseInt(localStorage.getItem('studentCounter')) : 2000;
+
+        // Initialize the URL input field
+        document.getElementById('googleScriptUrl').value = GOOGLE_SCRIPT_URL;
+
+        // Save URL button functionality
+        document.getElementById('saveUrlBtn').addEventListener('click', function() {
+            const newUrl = document.getElementById('googleScriptUrl').value.trim();
+            if (newUrl) {
+                GOOGLE_SCRIPT_URL = newUrl;
+                localStorage.setItem('googleScriptUrl', newUrl);
+                showStatus('✅ Google Script URL saved successfully!', 'success');
+            } else {
+                showStatus('⚠️ Please enter a valid URL', 'error');
+            }
+        });
 
         // Show status message
         function showStatus(message, type) {
@@ -815,9 +898,6 @@
             } else {
                 document.getElementById('upiIdDisplay').style.display = 'none';
             }
-            
-            // Show payment notification
-            document.getElementById('paymentNotification').style.display = 'block';
         }
 
         document.getElementById('submitBtn').addEventListener('click', async function(e) {
@@ -984,14 +1064,22 @@
                 };
 
                 console.log('Sending data to Google Sheets:', submissionData);
+                console.log('Using URL:', GOOGLE_SCRIPT_URL);
+
+                // Enhanced error handling for fetch
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
 
                 const response = await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    body: new URLSearchParams(submissionData)
+                    body: new URLSearchParams(submissionData),
+                    signal: controller.signal
                 });
+
+                clearTimeout(timeoutId);
 
                 if (response.ok) {
                     const result = await response.json();
@@ -1011,7 +1099,10 @@
                     Error: ${error.message}<br>
                     Time: ${new Date().toLocaleString()}<br>
                     URL: ${GOOGLE_SCRIPT_URL}<br>
-                    <strong>Solution:</strong> कृपया अपना Google Script URL सही से set करें
+                    <strong>Possible Solutions:</strong><br>
+                    1. कृपया अपना Google Script URL सही से set करें<br>
+                    2. Google Apps Script को deploy करते समय "Anyone" access दें<br>
+                    3. CORS issues से बचने के लिए form को web server पर host करें
                 `;
                 
                 const formData = getFormData();
@@ -1019,6 +1110,7 @@
                 formData.studentId = studentId;
                 formData.timestamp = new Date().toLocaleString('hi-IN');
                 
+                // Show success page even if Google Sheets fails
                 showSuccessPage(formData);
                 showStatus('⚠️ Form submitted locally. Google Sheets connection failed.', 'error');
             }
@@ -1170,9 +1262,6 @@
         const today = new Date();
         const maxDate = new Date(today.getFullYear() - 10, today.getMonth(), today.getDate());
         dobInput.max = maxDate.toISOString().split('T')[0];
-
-        // Show payment notification on page load
-        document.getElementById('paymentNotification').style.display = 'block';
     </script>
 </body>
 </html>
