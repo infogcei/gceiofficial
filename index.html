@@ -48,20 +48,21 @@
         header {
             background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
             color: var(--white);
-            padding: 20px;
+            padding: 25px 20px;
             text-align: center;
             position: relative;
         }
 
         .institute-name {
-            font-size: 24px;
+            font-size: 32px; /* Increased from 24px to 32px */
             font-weight: 700;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
         }
 
         .address, .contact {
-            font-size: 14px;
-            margin: 3px 0;
+            font-size: 16px; /* Slightly increased for better proportion */
+            margin: 5px 0;
             opacity: 0.9;
         }
 
@@ -503,6 +504,14 @@
                 font-size: 18px;
                 padding: 12px 20px;
             }
+            
+            .institute-name {
+                font-size: 26px; /* Slightly smaller on mobile */
+            }
+            
+            .address, .contact {
+                font-size: 14px; /* Slightly smaller on mobile */
+            }
         }
     </style>
 </head>
@@ -674,14 +683,14 @@
                 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="photo" class="required">Passport Size Photo</label>
+                        <label for="photo">Passport Size Photo</label>
                         <input type="file" id="photo" name="photo" class="file-upload" accept="image/*" required>
                         <div class="photo-requirements">Recommended: Passport size photo (2x2 inches), Max 500KB</div>
                         <div class="file-preview" id="photoPreview"></div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="aadharCard" class="required">Aadhar Card</label>
+                        <label for="aadharCard">Aadhar Card</label>
                         <input type="file" id="aadharCard" name="aadharCard" class="file-upload" accept="image/*,.pdf" required>
                         <div class="file-preview" id="aadharPreview"></div>
                     </div>
@@ -1199,4 +1208,3 @@
     </script>
 </body>
 </html>
-
