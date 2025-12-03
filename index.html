@@ -20,7 +20,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Arial', 'Nirmala UI', 'Mangal', sans-serif;
+            font-family: 'Segoe UI', 'Arial', 'Nirmala UI', sans-serif;
         }
 
         :root {
@@ -131,114 +131,6 @@
             box-shadow: var(--shadow);
         }
 
-        /* ===== LANGUAGE SWITCHER ===== */
-        .language-switcher {
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            background: white;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            width: 50px;
-            align-items: center;
-        }
-
-        .lang-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            transition: var(--transition);
-            font-size: 14px;
-        }
-
-        .lang-btn:hover {
-            background: var(--primary-dark);
-            transform: scale(1.1);
-        }
-
-        .lang-btn.active {
-            background: var(--secondary-color);
-            transform: scale(1.1);
-        }
-
-        /* ===== CALL BUTTONS ===== */
-        .call-buttons {
-            position: fixed;
-            top: 160px;
-            right: 20px;
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            background: white;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            width: 50px;
-            align-items: center;
-        }
-
-        .call-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #25D366;
-            color: white;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .call-btn:hover {
-            background: #128C7E;
-            transform: scale(1.1);
-        }
-
-        .call-btn.phone {
-            background: var(--primary-color);
-        }
-
-        .call-btn.phone:hover {
-            background: var(--primary-dark);
-        }
-
-        .call-btn .btn-text {
-            position: absolute;
-            right: 45px;
-            background: rgba(0,0,0,0.8);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 12px;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-        }
-
-        .call-btn:hover .btn-text {
-            opacity: 1;
-            visibility: visible;
-            right: 50px;
-        }
-
         /* ===== HEADER & NAVBAR ===== */
         header {
             position: fixed;
@@ -261,7 +153,6 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
-            position: relative;
         }
 
         .logo {
@@ -528,13 +419,11 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 14px;
         }
 
         .course-body li i {
             color: var(--primary-color);
             flex-shrink: 0;
-            font-size: 14px;
         }
 
         .course-duration {
@@ -544,63 +433,6 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 15px;
-        }
-
-        .course-fee {
-            color: var(--primary-dark);
-            font-weight: 700;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 16px;
-        }
-
-        /* ===== TRILINGUAL CONTENT ===== */
-        .english, .hindi, .hinglish {
-            display: none;
-        }
-
-        body.english .english {
-            display: block;
-        }
-
-        body.english .english-inline {
-            display: inline;
-        }
-
-        body.hindi .hindi {
-            display: block;
-        }
-
-        body.hindi .hindi-inline {
-            display: inline;
-        }
-
-        body.hinglish .hinglish {
-            display: block;
-        }
-
-        body.hinglish .hinglish-inline {
-            display: inline;
-        }
-
-        /* Inline elements for language switching */
-        span.english, span.hindi, span.hinglish {
-            display: none;
-        }
-
-        body.english span.english {
-            display: inline;
-        }
-
-        body.hindi span.hindi {
-            display: inline;
-        }
-
-        body.hinglish span.hinglish {
-            display: inline;
         }
 
         /* ===== TEAM SECTION ===== */
@@ -1136,16 +968,6 @@
             .hero {
                 background-attachment: scroll;
             }
-            
-            .language-switcher {
-                top: 90px;
-                right: 15px;
-            }
-            
-            .call-buttons {
-                top: 150px;
-                right: 15px;
-            }
         }
 
         @media (max-width: 768px) {
@@ -1224,24 +1046,6 @@
                 bottom: 20px;
                 left: 20px;
             }
-            
-            .language-switcher {
-                top: 80px;
-                right: 10px;
-                width: 45px;
-            }
-            
-            .call-buttons {
-                top: 140px;
-                right: 10px;
-                width: 45px;
-            }
-            
-            .lang-btn, .call-btn {
-                width: 35px;
-                height: 35px;
-                font-size: 12px;
-            }
         }
 
         @media (max-width: 576px) {
@@ -1300,9 +1104,7 @@
         @media print {
             .floating-buttons,
             .back-to-top,
-            .mobile-menu-btn,
-            .language-switcher,
-            .call-buttons {
+            .mobile-menu-btn {
                 display: none !important;
             }
             
@@ -1328,26 +1130,7 @@
         }
     </style>
 </head>
-<body class="english">
-    <!-- ===== LANGUAGE SWITCHER ===== -->
-    <div class="language-switcher">
-        <button class="lang-btn active" id="langEn" title="English">EN</button>
-        <button class="lang-btn" id="langHi" title="Hindi">HI</button>
-        <button class="lang-btn" id="langHin" title="Hinglish">HIN</button>
-    </div>
-
-    <!-- ===== CALL BUTTONS ===== -->
-    <div class="call-buttons">
-        <a href="tel:9244240484" class="call-btn phone" title="Call Now">
-            <i class="fas fa-phone"></i>
-            <span class="btn-text">Call Now</span>
-        </a>
-        <a href="https://wa.me/919244240484" class="call-btn" target="_blank" title="WhatsApp">
-            <i class="fab fa-whatsapp"></i>
-            <span class="btn-text">WhatsApp</span>
-        </a>
-    </div>
-
+<body>
     <!-- ===== HEADER ===== -->
     <header id="mainHeader">
         <div class="container">
@@ -1365,36 +1148,13 @@
                 </button>
                 
                 <ul class="nav-links" id="navLinks">
-                    <li><a href="#home">
-                        <span class="english">Home</span>
-                        <span class="hindi">होम</span>
-                        <span class="hinglish">Home</span>
-                    </a></li>
-                    <li><a href="#about">
-                        <span class="english">About Us</span>
-                        <span class="hindi">हमारे बारे में</span>
-                        <span class="hinglish">About Us</span>
-                    </a></li>
-                    <li><a href="#courses">
-                        <span class="english">Courses</span>
-                        <span class="hindi">कोर्सेज</span>
-                        <span class="hinglish">Courses</span>
-                    </a></li>
-                    <li><a href="#team">
-                        <span class="english">Our Team</span>
-                        <span class="hindi">हमारी टीम</span>
-                        <span class="hinglish">Our Team</span>
-                    </a></li>
-                    <li><a href="#testimonials">
-                        <span class="english">Reviews</span>
-                        <span class="hindi">समीक्षाएँ</span>
-                        <span class="hinglish">Reviews</span>
-                    </a></li>
-                    <li><a href="#contact">
-                        <span class="english">Contact</span>
-                        <span class="hindi">संपर्क करें</span>
-                        <span class="hinglish">Contact</span>
-                    </a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#team">Our Team</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -1405,34 +1165,17 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Guru Computer Education Institute</h1>
-                <div class="tagline">
-                    <span class="english">"Knowledge with Guru, Identity of Success"</span>
-                    <span class="hindi">"गुरु के साथ ज्ञान, सफलता की पहचान"</span>
-                    <span class="hinglish">"Guru ke saath gyan, safalta ki pehchan"</span>
-                </div>
-                
-                <p class="english">Since 2015 - Trusted Computer Education Institute in Bilha, Bilaspur</p>
-                <p class="hindi">2015 से - बिल्हा, बिलासपुर में विश्वसनीय कंप्यूटर शिक्षा संस्थान</p>
-                <p class="hinglish">2015 se - Bilha, Bilaspur mein trusted computer education institute</p>
+                <div class="tagline" role="heading" aria-level="2">"Guru Ke Saath Gyan, Safalta Ki Pehchan"</div>
+                <p>Since 2015 - Trusted Computer Education Institute in Bilha, Bilaspur</p>
                 
                 <div class="experience-badge">
                     <i class="fas fa-medal" aria-hidden="true"></i>
-                    <span class="english">Trusted Computer Training Centre Since 2015</span>
-                    <span class="hindi">2015 से विश्वसनीय कंप्यूटर प्रशिक्षण केंद्र</span>
-                    <span class="hinglish">2015 se trusted computer training centre</span>
+                    Trusted Computer Training Centre Since 2015
                 </div>
                 
                 <div class="hero-buttons">
-                    <a href="#courses" class="btn btn-primary">
-                        <span class="english">View All Courses</span>
-                        <span class="hindi">सभी कोर्स देखें</span>
-                        <span class="hinglish">All courses dekhein</span>
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <span class="english">Admission Form</span>
-                        <span class="hindi">प्रवेश फॉर्म</span>
-                        <span class="hinglish">Admission form</span>
-                    </a>
+                    <a href="#courses" class="btn btn-primary">View All Courses</a>
+                    <a href="#contact" class="btn btn-secondary">Admission Form</a>
                 </div>
             </div>
         </div>
@@ -1442,14 +1185,8 @@
     <section class="about" id="about" aria-label="About Our Institute">
         <div class="container">
             <div class="section-title">
-                <h2>
-                    <span class="english">About Our Institute</span>
-                    <span class="hindi">हमारे संस्थान के बारे में</span>
-                    <span class="hinglish">Hamare institute ke baare mein</span>
-                </h2>
-                <p class="english">Providing quality computer education with experienced faculty and modern facilities</p>
-                <p class="hindi">अनुभवी संकाय और आधुनिक सुविधाओं के साथ गुणवत्तापूर्ण कंप्यूटर शिक्षा प्रदान करना</p>
-                <p class="hinglish">Experienced faculty aur modern facilities ke saath quality computer education provide karna</p>
+                <h2>About Our Institute</h2>
+                <p>Providing quality computer education with experienced faculty and modern facilities</p>
             </div>
             
             <div class="about-content">
@@ -1457,53 +1194,33 @@
                     <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Students learning at Guru Computer Institute lab" loading="lazy">
                 </div>
                 <div class="about-text">
-                    <h3 class="english">Welcome to Guru Computer Education Institute</h3>
-                    <h3 class="hindi">गुरु कंप्यूटर एजुकेशन इंस्टीट्यूट में आपका स्वागत है</h3>
-                    <h3 class="hinglish">Guru Computer Education Institute mein aapka swagat hai</h3>
-                    
-                    <p class="english">Established in 2015, Guru Computer Education Institute has been a pioneer in providing quality computer education in Bilha, Bilaspur. Our mission is to empower students with practical computer skills that are essential in today's digital world.</p>
-                    <p class="hindi">2015 में स्थापित, गुरु कंप्यूटर एजुकेशन इंस्टीट्यूट बिल्हा, बिलासपर में गुणवत्तापूर्ण कंप्यूटर शिक्षा प्रदान करने में अग्रणी रहा है। हमारा मिशन छात्रों को व्यावहारिक कंप्यूटर कौशल से सशक्त बनाना है जो आज की डिजिटल दुनिया में आवश्यक हैं।</p>
-                    <p class="hinglish">2015 mein establish, Guru Computer Education Institute Bilha, Bilaspur mein quality computer education dene mein pioneer raha hai. Hamara mission students ko practical computer skills se empower karna hai jo aaj ki digital duniya mein essential hain.</p>
-                    
-                    <p class="english">We offer a wide range of courses from basic computer literacy to advanced professional courses like Tally, DCA, PGDCA, and AI tools including ChatGPT.</p>
-                    <p class="hindi">हम बुनियादी कंप्यूटर साक्षरता से लेकर टैली, डीसीए, पीजीडीसीए और चैटजीपीटी सहित एआई टूल जैसे उन्नत पेशेवर पाठ्यक्रमों की एक विस्तृत श्रृंखला प्रदान करते हैं।</p>
-                    <p class="hinglish">Hum basic computer literacy se lekar Tally, DCA, PGDCA aur ChatGPT samet AI tools jaise advanced professional courses ki ek wide range provide karte hain.</p>
+                    <h3>Welcome to Guru Computer Education Institute</h3>
+                    <p>Established in 2015, Guru Computer Education Institute has been a pioneer in providing quality computer education in Bilha, Bilaspur. Our mission is to empower students with practical computer skills that are essential in today's digital world.</p>
+                    <p>We offer a wide range of courses from basic computer literacy to advanced professional courses like Tally, DCA, PGDCA, and AI tools including ChatGPT.</p>
                     
                     <div class="features-grid">
                         <div class="feature-card">
                             <div class="feature-icon">
                                 <i class="fas fa-laptop-code" aria-hidden="true"></i>
                             </div>
-                            <h4 class="english">Modern Lab</h4>
-                            <h4 class="hindi">आधुनिक लैब</h4>
-                            <h4 class="hinglish">Modern lab</h4>
-                            <p class="english">Fully equipped computer lab with latest software</p>
-                            <p class="hindi">नवीनतम सॉफ्टवेयर के साथ पूरी तरह सुसज्जित कंप्यूटर लैब</p>
-                            <p class="hinglish">Latest software ke saath fully equipped computer lab</p>
+                            <h4>Modern Lab</h4>
+                            <p>Fully equipped computer lab with latest software</p>
                         </div>
                         
                         <div class="feature-card">
                             <div class="feature-icon">
                                 <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i>
                             </div>
-                            <h4 class="english">Expert Faculty</h4>
-                            <h4 class="hindi">विशेषज्ञ संकाय</h4>
-                            <h4 class="hinglish">Expert faculty</h4>
-                            <p class="english">Experienced and certified trainers</p>
-                            <p class="hindi">अनुभवी और प्रमाणित प्रशिक्षक</p>
-                            <p class="hinglish">Experienced aur certified trainers</p>
+                            <h4>Expert Faculty</h4>
+                            <p>Experienced and certified trainers</p>
                         </div>
                         
                         <div class="feature-card">
                             <div class="feature-icon">
                                 <i class="fas fa-certificate" aria-hidden="true"></i>
                             </div>
-                            <h4 class="english">Certification</h4>
-                            <h4 class="hindi">प्रमाणन</h4>
-                            <h4 class="hinglish">Certification</h4>
-                            <p class="english">Government recognized certificates</p>
-                            <p class="hindi">सरकार द्वारा मान्यता प्राप्त प्रमाणपत्र</p>
-                            <p class="hinglish">Government recognized certificates</p>
+                            <h4>Certification</h4>
+                            <p>Government recognized certificates</p>
                         </div>
                     </div>
                 </div>
@@ -1515,430 +1232,84 @@
     <section id="courses" aria-label="Our Courses">
         <div class="container">
             <div class="section-title">
-                <h2>
-                    <span class="english">Our Courses</span>
-                    <span class="hindi">हमारे कोर्स</span>
-                    <span class="hinglish">Hamare courses</span>
-                </h2>
-                <p class="english">Comprehensive computer courses designed for career success</p>
-                <p class="hindi">करियर सफलता के लिए डिज़ाइन किए गए व्यापक कंप्यूटर कोर्स</p>
-                <p class="hinglish">Career success ke liye designed comprehensive computer courses</p>
+                <h2>Our Courses</h2>
+                <p>Comprehensive computer courses designed for career success</p>
             </div>
             
             <div class="courses-grid">
-                <!-- Course 1: Basic Computer -->
+                <!-- Course 1 -->
                 <div class="course-card">
                     <div class="course-header">
-                        <h3>
-                            <span class="english">Basic Computer</span>
-                            <span class="hindi">बेसिक कंप्यूटर</span>
-                            <span class="hinglish">Basic Computer</span>
-                        </h3>
+                        <h3>Basic Computer & MS Office</h3>
                     </div>
                     <div class="course-body">
                         <div class="course-duration">
-                            <i class="far fa-clock" aria-hidden="true"></i> 
-                            <span class="english">Duration: 45 Days</span>
-                            <span class="hindi">अवधि: 45 दिन</span>
-                            <span class="hinglish">Duration: 45 din</span>
-                        </div>
-                        <div class="course-fee">
-                            <i class="fas fa-rupee-sign" aria-hidden="true"></i> 
-                            <span class="english">Fee: ₹599</span>
-                            <span class="hindi">फीस: ₹599</span>
-                            <span class="hinglish">Fee: ₹599</span>
+                            <i class="far fa-clock" aria-hidden="true"></i> Duration: 3 Months
                         </div>
                         <ul>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">Computer Basic Knowledge</span>
-                                <span class="hindi">कंप्यूटर की बुनियादी जानकारी</span>
-                                <span class="hinglish">Computer ki basic knowledge</span>
-                            </li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">Windows OS Usage</span>
-                                <span class="hindi">Windows ऑपरेटिंग सिस्टम का उपयोग</span>
-                                <span class="hinglish">Windows OS ka use</span>
-                            </li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">Notepad, Wordpad, Paint</span>
-                                <span class="hindi">नोटपैड, वर्डपैड, पेंट</span>
-                                <span class="hinglish">Notepad, Wordpad, Paint</span>
-                            </li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">File & Folder Management</span>
-                                <span class="hindi">फाइल व फोल्डर प्रबंधन</span>
-                                <span class="hinglish">File aur folder management</span>
-                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Computer Fundamentals</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> MS Word, Excel, PowerPoint</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Internet & Email</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Typing (English/Hindi)</li>
                         </ul>
-                        <a href="#contact" class="btn btn-primary">
-                            <span class="english">Enroll Now</span>
-                            <span class="hindi">अभी नामांकन करें</span>
-                            <span class="hinglish">Abhi enroll karein</span>
-                        </a>
+                        <a href="#contact" class="btn btn-primary">Enroll Now</a>
                     </div>
                 </div>
                 
-                <!-- Course 2: MS Office -->
+                <!-- Course 2 -->
                 <div class="course-card">
                     <div class="course-header">
-                        <h3>
-                            <span class="english">MS Office (Word, Excel, PowerPoint)</span>
-                            <span class="hindi">एमएस ऑफिस (वर्ड, एक्सेल, पावरपॉइंट)</span>
-                            <span class="hinglish">MS Office (Word, Excel, PowerPoint)</span>
-                        </h3>
+                        <h3>Tally Prime with GST</h3>
                     </div>
                     <div class="course-body">
                         <div class="course-duration">
-                            <i class="far fa-clock" aria-hidden="true"></i> 
-                            <span class="english">Duration: 1.5-2 Months</span>
-                            <span class="hindi">अवधि: 1.5-2 महीने</span>
-                            <span class="hinglish">Duration: 1.5-2 mahine</span>
-                        </div>
-                        <div class="course-fee">
-                            <i class="fas fa-rupee-sign" aria-hidden="true"></i> 
-                            <span class="english">Fee: ₹1,499</span>
-                            <span class="hindi">फीस: ₹1,499</span>
-                            <span class="hinglish">Fee: ₹1,499</span>
+                            <i class="far fa-clock" aria-hidden="true"></i> Duration: 4 Months
                         </div>
                         <ul>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">MS Word: Documents, Formatting, Mail Merge</span>
-                                <span class="hindi">एमएस वर्ड: डॉक्यूमेंट, फॉर्मेटिंग, मेल मर्ज</span>
-                                <span class="hinglish">MS Word: Documents, Formatting, Mail Merge</span>
-                            </li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">MS Excel: Formulas, Charts, Pivot Tables</span>
-                                <span class="hindi">एमएस एक्सेल: फॉर्मूला, चार्ट, पिवट टेबल</span>
-                                <span class="hinglish">MS Excel: Formulas, Charts, Pivot Tables</span>
-                            </li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">MS PowerPoint: Presentations, Animations</span>
-                                <span class="hindi">एमएस पावरपॉइंट: प्रेजेंटेशन, एनिमेशन</span>
-                                <span class="hinglish">MS PowerPoint: Presentations, Animations</span>
-                            </li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">Practical Projects & Assignments</span>
-                                <span class="hindi">व्यावहारिक प्रोजेक्ट और असाइनमेंट</span>
-                                <span class="hinglish">Practical projects aur assignments</span>
-                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Complete Accounting</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> GST Filing & Returns</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Inventory Management</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> TDS & Payroll</li>
                         </ul>
-                        <a href="#contact" class="btn btn-primary">
-                            <span class="english">Enroll Now</span>
-                            <span class="hindi">अभी नामांकन करें</span>
-                            <span class="hinglish">Abhi enroll karein</span>
-                        </a>
+                        <a href="#contact" class="btn btn-primary">Enroll Now</a>
                     </div>
                 </div>
                 
-                <!-- Course 3: Typing -->
+                <!-- Course 3 -->
                 <div class="course-card">
                     <div class="course-header">
-                        <h3>
-                            <span class="english">Typing (Hindi + English)</span>
-                            <span class="hindi">टाइपिंग (हिंदी + अंग्रेजी)</span>
-                            <span class="hinglish">Typing (Hindi + English)</span>
-                        </h3>
+                        <h3>DCA & PGDCA</h3>
                     </div>
                     <div class="course-body">
                         <div class="course-duration">
-                            <i class="far fa-clock" aria-hidden="true"></i> 
-                            <span class="english">Duration: 1 Month</span>
-                            <span class="hindi">अवधि: 1 महीना</span>
-                            <span class="hinglish">Duration: 1 mahina</span>
-                        </div>
-                        <div class="course-fee">
-                            <i class="fas fa-rupee-sign" aria-hidden="true"></i> 
-                            <span class="english">Fee: ₹499</span>
-                            <span class="hindi">फीस: ₹499</span>
-                            <span class="hinglish">Fee: ₹499</span>
+                            <i class="far fa-clock" aria-hidden="true"></i> Duration: 6-12 Months
                         </div>
                         <ul>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">Learn Touch Typing</span>
-                                <span class="hindi">टच टाइपिंग सीखना</span>
-                                <span class="hinglish">Touch typing seekhna</span>
-                            </li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">English & Hindi Typing (Computer, Mobile)</span>
-                                <span class="hindi">अंग्रेजी और हिंदी टाइपिंग (कंप्यूटर, मोबाइल)</span>
-                                <span class="hinglish">English aur Hindi typing (Computer, Mobile)</span>
-                            </li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">Increase Speed & Accuracy</span>
-                                <span class="hindi">स्पीड और शुद्धता बढ़ाना</span>
-                                <span class="hinglish">Speed aur accuracy badhana</span>
-                            </li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">Certificate after Course Completion</span>
-                                <span class="hindi">कोर्स पूरा होने पर प्रमाणपत्र</span>
-                                <span class="hinglish">Course complete hone par certificate</span>
-                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Diploma in Computer Application</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Post Graduate DCA</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Programming Basics</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Database Management</li>
                         </ul>
-                        <a href="#contact" class="btn btn-primary">
-                            <span class="english">Enroll Now</span>
-                            <span class="hindi">अभी नामांकन करें</span>
-                            <span class="hinglish">Abhi enroll karein</span>
-                        </a>
+                        <a href="#contact" class="btn btn-primary">Enroll Now</a>
                     </div>
                 </div>
                 
-                <!-- Course 4: Tally Prime -->
+                <!-- Course 4 -->
                 <div class="course-card">
                     <div class="course-header">
-                        <h3>
-                            <span class="english">Tally Prime with GST</span>
-                            <span class="hindi">टैली प्राइम with GST</span>
-                            <span class="hinglish">Tally Prime with GST</span>
-                        </h3>
+                        <h3>Design & AI Tools</h3>
                     </div>
                     <div class="course-body">
                         <div class="course-duration">
-                            <i class="far fa-clock" aria-hidden="true"></i> 
-                            <span class="english">Duration: 3 Months</span>
-                            <span class="hindi">अवधि: 3 महीने</span>
-                            <span class="hinglish">Duration: 3 mahine</span>
-                        </div>
-                        <div class="course-fee">
-                            <i class="fas fa-rupee-sign" aria-hidden="true"></i> 
-                            <span class="english">Fee: ₹2,999</span>
-                            <span class="hindi">फीस: ₹2,999</span>
-                            <span class="hinglish">Fee: ₹2,999</span>
+                            <i class="far fa-clock" aria-hidden="true"></i> Duration: 3 Months
                         </div>
                         <ul>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">Complete Accounting in Tally Prime</span>
-                                <span class="hindi">टैली प्राइम में पूर्ण लेखांकन</span>
-                                <span class="hinglish">Tally Prime mein complete accounting</span>
-                            </li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">GST Returns, Invoice Creation</span>
-                                <span class="hindi">GST रिटर्न, इनवॉइस बनाना</span>
-                                <span class="hinglish">GST returns, invoice banana</span>
-                            </li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">Inventory Management</span>
-                                <span class="hindi">इन्वेंटरी प्रबंधन</span>
-                                <span class="hinglish">Inventory management</span>
-                            </li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">Payroll & Banking</span>
-                                <span class="hindi">पेरोल और बैंकिंग</span>
-                                <span class="hinglish">Payroll aur banking</span>
-                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Adobe Photoshop</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Canva Design</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> AI & ChatGPT</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Digital Marketing Basics</li>
                         </ul>
-                        <a href="#contact" class="btn btn-primary">
-                            <span class="english">Enroll Now</span>
-                            <span class="hindi">अभी नामांकन करें</span>
-                            <span class="hinglish">Abhi enroll karein</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Course 5: DCA -->
-                <div class="course-card">
-                    <div class="course-header">
-                        <h3>
-                            <span class="english">DCA (Diploma in Computer Applications)</span>
-                            <span class="hindi">डीसीए (कंप्यूटर एप्लीकेशन में डिप्लोमा)</span>
-                            <span class="hinglish">DCA (Computer Applications mein Diploma)</span>
-                        </h3>
-                    </div>
-                    <div class="course-body">
-                        <div class="course-duration">
-                            <i class="far fa-clock" aria-hidden="true"></i> 
-                            <span class="english">Duration: 1 Year</span>
-                            <span class="hindi">अवधि: 1 साल</span>
-                            <span class="hinglish">Duration: 1 saal</span>
-                        </div>
-                        <div class="course-fee">
-                            <i class="fas fa-rupee-sign" aria-hidden="true"></i> 
-                            <span class="english">Contact for Fee Details</span>
-                            <span class="hindi">फीस विवरण के लिए संपर्क करें</span>
-                            <span class="hinglish">Fee details ke liye contact karein</span>
-                        </div>
-                        <ul>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">Diploma in Computer Applications</span>
-                                <span class="hindi">कंप्यूटर एप्लीकेशन में डिप्लोमा</span>
-                                <span class="hinglish">Computer Applications mein Diploma</span>
-                            </li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">All Basic & Advanced Software</span>
-                                <span class="hindi">सभी बेसिक और एडवांस सॉफ्टवेयर</span>
-                                <span class="hinglish">Sab basic aur advanced software</span>
-                            </li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">Practical Knowledge & Projects</span>
-                                <span class="hindi">प्रैक्टिकल नॉलेज और प्रोजेक्ट</span>
-                                <span class="hinglish">Practical knowledge aur projects</span>
-                            </li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">Career Guidance & Placement Assistance</span>
-                                <span class="hindi">करियर मार्गदर्शन और प्लेसमेंट सहायता</span>
-                                <span class="hinglish">Career guidance aur placement assistance</span>
-                            </li>
-                        </ul>
-                        <a href="#contact" class="btn btn-primary">
-                            <span class="english">Enroll Now</span>
-                            <span class="hindi">अभी नामांकन करें</span>
-                            <span class="hinglish">Abhi enroll karein</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Course 6: Photoshop -->
-                <div class="course-card">
-                    <div class="course-header">
-                        <h3>
-                            <span class="english">Photoshop</span>
-                            <span class="hindi">फोटोशॉप</span>
-                            <span class="hinglish">Photoshop</span>
-                        </h3>
-                    </div>
-                    <div class="course-body">
-                        <div class="course-duration">
-                            <i class="far fa-clock" aria-hidden="true"></i> 
-                            <span class="english">Duration: 45 Days</span>
-                            <span class="hindi">अवधि: 45 दिन</span>
-                            <span class="hinglish">Duration: 45 din</span>
-                        </div>
-                        <div class="course-fee">
-                            <i class="fas fa-rupee-sign" aria-hidden="true"></i> 
-                            <span class="english">Fee: ₹2,499</span>
-                            <span class="hindi">फीस: ₹2,499</span>
-                            <span class="hinglish">Fee: ₹2,499</span>
-                        </div>
-                        <ul>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">Photo Editing, Retouching</span>
-                                <span class="hindi">फोटो एडिटिंग, रिटचिंग</span>
-                                <span class="hinglish">Photo editing, retouching</span>
-                            </li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">Graphic Design Basics</span>
-                                <span class="hindi">ग्राफिक डिज़ाइन बेसिक्स</span>
-                                <span class="hinglish">Graphic design basics</span>
-                            </li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">Logo, Banner, Social Media Post Design</span>
-                                <span class="hindi">लोगो, बैनर, सोशल मीडिया पोस्ट डिज़ाइन</span>
-                                <span class="hinglish">Logo, banner, social media post design</span>
-                            </li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">Professional Portfolio Creation</span>
-                                <span class="hindi">पेशेवर पोर्टफोलियो निर्माण</span>
-                                <span class="hinglish">Professional portfolio creation</span>
-                            </li>
-                        </ul>
-                        <a href="#contact" class="btn btn-primary">
-                            <span class="english">Enroll Now</span>
-                            <span class="hindi">अभी नामांकन करें</span>
-                            <span class="hinglish">Abhi enroll karein</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Course 7: Canva -->
-                <div class="course-card">
-                    <div class="course-header">
-                        <h3>
-                            <span class="english">Canva</span>
-                            <span class="hindi">कैनवा</span>
-                            <span class="hinglish">Canva</span>
-                        </h3>
-                    </div>
-                    <div class="course-body">
-                        <div class="course-duration">
-                            <i class="far fa-clock" aria-hidden="true"></i> 
-                            <span class="english">Duration: 1 Month</span>
-                            <span class="hindi">अवधि: 1 महीना</span>
-                            <span class="hinglish">Duration: 1 mahina</span>
-                        </div>
-                        <div class="course-fee">
-                            <i class="fas fa-rupee-sign" aria-hidden="true"></i> 
-                            <span class="english">Fee: ₹999</span>
-                            <span class="hindi">फीस: ₹999</span>
-                            <span class="hinglish">Fee: ₹999</span>
-                        </div>
-                        <ul>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">Design Creation on Canva</span>
-                                <span class="hindi">कैनवा पर डिज़ाइन बनाना</span>
-                                <span class="hinglish">Canva par design banana</span>
-                            </li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">Professional Presentations, Posters, Logos</span>
-                                <span class="hindi">प्रोफेशनल प्रेजेंटेशन, पोस्टर, लोगो</span>
-                                <span class="hinglish">Professional presentations, posters, logos</span>
-                            </li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">Social Media & Marketing Design</span>
-                                <span class="hindi">सोशल मीडिया और मार्केटिंग डिज़ाइन</span>
-                                <span class="hinglish">Social media aur marketing design</span>
-                            </li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">Templates & Brand Kit Creation</span>
-                                <span class="hindi">टेम्प्लेट और ब्रांड किट निर्माण</span>
-                                <span class="hinglish">Templates aur brand kit creation</span>
-                            </li>
-                        </ul>
-                        <a href="#contact" class="btn btn-primary">
-                            <span class="english">Enroll Now</span>
-                            <span class="hindi">अभी नामांकन करें</span>
-                            <span class="hinglish">Abhi enroll karein</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Course 8: AI ChatGPT -->
-                <div class="course-card">
-                    <div class="course-header">
-                        <h3>
-                            <span class="english">AI Course – ChatGPT Training</span>
-                            <span class="hindi">एआई कोर्स – चैटजीपीटी प्रशिक्षण</span>
-                            <span class="hinglish">AI Course – ChatGPT Training</span>
-                        </h3>
-                    </div>
-                    <div class="course-body">
-                        <div class="course-duration">
-                            <i class="far fa-clock" aria-hidden="true"></i> 
-                            <span class="english">Duration: 20-30 Days</span>
-                            <span class="hindi">अवधि: 20-30 दिन</span>
-                            <span class="hinglish">Duration: 20-30 din</span>
-                        </div>
-                        <div class="course-fee">
-                            <i class="fas fa-rupee-sign" aria-hidden="true"></i> 
-                            <span class="english">Fee: ₹1,499</span>
-                            <span class="hindi">फीस: ₹1,499</span>
-                            <span class="hinglish">Fee: ₹1,499</span>
-                        </div>
-                        <ul>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">Introduction to AI & ChatGPT</span>
-                                <span class="hindi">AI और ChatGPT का परिचय</span>
-                                <span class="hinglish">AI aur ChatGPT ka introduction</span>
-                            </li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">Prompt Engineering</span>
-                                <span class="hindi">प्रॉम्प्ट इंजीनियरिंग</span>
-                                <span class="hinglish">Prompt engineering</span>
-                            </li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">Content Writing, Idea Generation, Problem Solving</span>
-                                <span class="hindi">कॉन्टेंट राइटिंग, आइडिया जनरेशन, प्रॉब्लम सॉल्विंग</span>
-                                <span class="hinglish">Content writing, idea generation, problem solving</span>
-                            </li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
-                                <span class="english">AI Use in Employment & Business</span>
-                                <span class="hindi">रोज़गार और व्यवसाय में AI के उपयोग</span>
-                                <span class="hinglish">Employment aur business mein AI ka use</span>
-                            </li>
-                        </ul>
-                        <a href="#contact" class="btn btn-primary">
-                            <span class="english">Enroll Now</span>
-                            <span class="hindi">अभी नामांकन करें</span>
-                            <span class="hinglish">Abhi enroll karein</span>
-                        </a>
+                        <a href="#contact" class="btn btn-primary">Enroll Now</a>
                     </div>
                 </div>
             </div>
@@ -1949,14 +1320,8 @@
     <section class="team" id="team" aria-label="Our Team">
         <div class="container">
             <div class="section-title">
-                <h2>
-                    <span class="english">Our Management Team</span>
-                    <span class="hindi">हमारी प्रबंधन टीम</span>
-                    <span class="hinglish">Hamari management team</span>
-                </h2>
-                <p class="english">Meet our dedicated team of professionals</p>
-                <p class="hindi">हमारे समर्पित पेशेवरों की टीम से मिलें</p>
-                <p class="hinglish">Hamare dedicated professionals ki team se milein</p>
+                <h2>Our Management Team</h2>
+                <p>Meet our dedicated team of professionals</p>
             </div>
             
             <div class="team-grid">
@@ -1965,20 +1330,11 @@
                     <div class="team-avatar">NJ</div>
                     <div class="team-info">
                         <h3>Nisha Jangde</h3>
-                        <p>
-                            <span class="english">Founder & Director</span>
-                            <span class="hindi">संस्थापक और निदेशक</span>
-                            <span class="hinglish">Founder aur Director</span>
-                        </p>
-                        <p class="english">With 9+ years of experience in computer education, leading the institute with dedication.</p>
-                        <p class="hindi">कंप्यूटर शिक्षा में 9+ वर्षों के अनुभव के साथ, समर्पण के साथ संस्थान का नेतृत्व कर रही हैं।</p>
-                        <p class="hinglish">Computer education mein 9+ saal ke experience ke saath, dedication ke saath institute ka netritva kar rahi hain.</p>
+                        <p>Founder & Director</p>
+                        <p>With 9+ years of experience in computer education, leading the institute with dedication.</p>
                         <div class="team-contact">
                             <a href="tel:9244240484">
-                                <i class="fas fa-phone" aria-hidden="true"></i> 
-                                <span class="english">Call Now</span>
-                                <span class="hindi">कॉल करें</span>
-                                <span class="hinglish">Call karein</span>
+                                <i class="fas fa-phone" aria-hidden="true"></i> Call: 92442 40484
                             </a>
                         </div>
                     </div>
@@ -1989,20 +1345,11 @@
                     <div class="team-avatar">SJ</div>
                     <div class="team-info">
                         <h3>Sandeep Jangde</h3>
-                        <p>
-                            <span class="english">Centre Head</span>
-                            <span class="hindi">केंद्र प्रमुख</span>
-                            <span class="hinglish">Centre Head</span>
-                        </p>
-                        <p class="english">Managing institute operations and ensuring quality education delivery.</p>
-                        <p class="hindi">संस्थान संचालन का प्रबंधन और गुणवत्तापूर्ण शिक्षा वितरण सुनिश्चित करना।</p>
-                        <p class="hinglish">Institute operations ka management aur quality education delivery ensure karna.</p>
+                        <p>Centre Head</p>
+                        <p>Managing institute operations and ensuring quality education delivery.</p>
                         <div class="team-contact">
                             <a href="tel:8349902843">
-                                <i class="fas fa-phone" aria-hidden="true"></i> 
-                                <span class="english">Call Now</span>
-                                <span class="hindi">कॉल करें</span>
-                                <span class="hinglish">Call karein</span>
+                                <i class="fas fa-phone" aria-hidden="true"></i> Call: 83499 02843
                             </a>
                         </div>
                     </div>
@@ -2013,20 +1360,11 @@
                     <div class="team-avatar">DJ</div>
                     <div class="team-info">
                         <h3>Dheeraj Jangde</h3>
-                        <p>
-                            <span class="english">Operations Manager & Counselor</span>
-                            <span class="hindi">संचालन प्रबंधक और सलाहकार</span>
-                            <span class="hinglish">Operations Manager aur Counselor</span>
-                        </p>
-                        <p class="english">Helping students choose the right courses and managing daily operations.</p>
-                        <p class="hindi">छात्रों को सही पाठ्यक्रम चुनने में मदद करना और दैनिक संचालन का प्रबंधन करना।</p>
-                        <p class="hinglish">Students ko sahi courses choose karne mein madad karna aur daily operations ka management karna.</p>
+                        <p>Operations Manager & Counselor</p>
+                        <p>Helping students choose the right courses and managing daily operations.</p>
                         <div class="team-contact">
                             <a href="tel:9343225522">
-                                <i class="fas fa-phone" aria-hidden="true"></i> 
-                                <span class="english">Call Now</span>
-                                <span class="hindi">कॉल करें</span>
-                                <span class="hinglish">Call karein</span>
+                                <i class="fas fa-phone" aria-hidden="true"></i> Call: 93432 25522
                             </a>
                         </div>
                     </div>
@@ -2039,33 +1377,21 @@
     <section class="testimonials" id="testimonials" aria-label="Student Testimonials">
         <div class="container">
             <div class="section-title">
-                <h2>
-                    <span class="english">Student Reviews</span>
-                    <span class="hindi">छात्र समीक्षाएँ</span>
-                    <span class="hinglish">Student reviews</span>
-                </h2>
-                <p class="english">What our students say about us</p>
-                <p class="hindi">हमारे छात्र हमारे बारे में क्या कहते हैं</p>
-                <p class="hinglish">Hamare students hamare baare mein kya kehte hain</p>
+                <h2>Student Reviews</h2>
+                <p>What our students say about us</p>
             </div>
             
             <div class="testimonials-slider">
                 <!-- Testimonial 1 -->
                 <div class="testimonial-card active">
                     <div class="testimonial-text">
-                        <span class="english">I completed Tally course from Guru Computer Institute. The faculty is very supportive and the practical training helped me get a job in a CA firm. Highly recommended!</span>
-                        <span class="hindi">मैंने गुरु कंप्यूटर इंस्टीट्यूट से टैली कोर्स पूरा किया। संकाय बहुत सहायक है और व्यावहारिक प्रशिक्षण ने मुझे एक सीए फर्म में नौकरी पाने में मदद की। अत्यधिक अनुशंसित!</span>
-                        <span class="hinglish">Maine Guru Computer Institute se Tally course complete kiya. Faculty bahut supportive hai aur practical training ne mujhe ek CA firm mein job pane mein madad ki. Highly recommended!</span>
+                        I completed Tally course from Guru Computer Institute. The faculty is very supportive and the practical training helped me get a job in a CA firm. Highly recommended!
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">RP</div>
                         <div class="author-info">
                             <h4>Rahul Patel</h4>
-                            <p>
-                                <span class="english">Tally Student, 2023</span>
-                                <span class="hindi">टैली छात्र, 2023</span>
-                                <span class="hinglish">Tally student, 2023</span>
-                            </p>
+                            <p>Tally Student, 2023</p>
                         </div>
                     </div>
                 </div>
@@ -2073,19 +1399,13 @@
                 <!-- Testimonial 2 -->
                 <div class="testimonial-card">
                     <div class="testimonial-text">
-                        <span class="english">The DCA course curriculum is comprehensive and up-to-date. I learned practical skills that are actually useful in real jobs. Thank you Guru Computer Institute!</span>
-                        <span class="hindi">डीसीए कोर्स का पाठ्यक्रम व्यापक और अद्यतन है। मैंने व्यावहारिक कौशल सीखे जो वास्तविक नौकरियों में उपयोगी हैं। धन्यवाद गुरु कंप्यूटर इंस्टीट्यूट!</span>
-                        <span class="hinglish">DCA course ka curriculum comprehensive aur up-to-date hai. Maine practical skills seekhe jo actual jobs mein useful hain. Thank you Guru Computer Institute!</span>
+                        The DCA course curriculum is comprehensive and up-to-date. I learned practical skills that are actually useful in real jobs. Thank you Guru Computer Institute!
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">PS</div>
                         <div class="author-info">
                             <h4>Priya Sharma</h4>
-                            <p>
-                                <span class="english">DCA Student, 2024</span>
-                                <span class="hindi">डीसीए छात्र, 2024</span>
-                                <span class="hinglish">DCA student, 2024</span>
-                            </p>
+                            <p>DCA Student, 2024</p>
                         </div>
                     </div>
                 </div>
@@ -2093,19 +1413,13 @@
                 <!-- Testimonial 3 -->
                 <div class="testimonial-card">
                     <div class="testimonial-text">
-                        <span class="english">Excellent teaching methodology. The Basic Computer course helped my mother start her own small business. Very affordable fees and quality education.</span>
-                        <span class="hindi">उत्कृष्ट शिक्षण पद्धति। बेसिक कंप्यूटर कोर्स ने मेरी माँ को अपना छोटा व्यवसाय शुरू करने में मदद की। बहुत सस्ती फीस और गुणवत्तापूर्ण शिक्षा।</span>
-                        <span class="hinglish">Excellent teaching methodology. Basic Computer course ne meri maa ko apna chhota vyavsay shuru karne mein madad ki. Bahut sasti fees aur quality education.</span>
+                        Excellent teaching methodology. The Basic Computer course helped my mother start her own small business. Very affordable fees and quality education.
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">AS</div>
                         <div class="author-info">
                             <h4>Anil Singh</h4>
-                            <p>
-                                <span class="english">Basic Computer Student, 2024</span>
-                                <span class="hindi">बेसिक कंप्यूटर छात्र, 2024</span>
-                                <span class="hinglish">Basic Computer student, 2024</span>
-                            </p>
+                            <p>Basic Computer Student, 2024</p>
                         </div>
                     </div>
                 </div>
@@ -2119,18 +1433,37 @@
         </div>
     </section>
 
+    <!-- ===== GALLERY ===== -->
+    <section class="gallery" id="gallery" aria-label="Photo Gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Gallery</h2>
+                <p>Glimpse of our institute and activities</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Modern computer lab at Guru Computer Institute" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1524178234883-043d5c3f3cf4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Students attending computer class" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Teacher providing one-on-one training" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab590?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Certificate distribution ceremony" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== CONTACT SECTION ===== -->
     <section class="contact" id="contact" aria-label="Contact Us">
         <div class="container">
             <div class="section-title">
-                <h2>
-                    <span class="english">Contact Us</span>
-                    <span class="hindi">संपर्क करें</span>
-                    <span class="hinglish">Contact karein</span>
-                </h2>
-                <p class="english">Get in touch for admissions and inquiries</p>
-                <p class="hindi">प्रवेश और पूछताछ के लिए संपर्क करें</p>
-                <p class="hinglish">Admissions aur inquiries ke liye contact karein</p>
+                <h2>Contact Us</h2>
+                <p>Get in touch for admissions and inquiries</p>
             </div>
             
             <div class="contact-wrapper">
@@ -2140,11 +1473,7 @@
                             <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                         </div>
                         <div class="info-content">
-                            <h3>
-                                <span class="english">Institute Address</span>
-                                <span class="hindi">संस्थान का पता</span>
-                                <span class="hinglish">Institute ka pata</span>
-                            </h3>
+                            <h3>Institute Address</h3>
                             <p>Near Police Station, Dagori Road<br>
                             Bilha, Bilaspur (Chhattisgarh)<br>
                             PIN Code: 495224</p>
@@ -2156,11 +1485,7 @@
                             <i class="fas fa-phone" aria-hidden="true"></i>
                         </div>
                         <div class="info-content">
-                            <h3>
-                                <span class="english">Contact Numbers</span>
-                                <span class="hindi">संपर्क नंबर</span>
-                                <span class="hinglish">Contact numbers</span>
-                            </h3>
+                            <h3>Contact Numbers</h3>
                             <p>Nisha Jangde (Founder): 92442 40484<br>
                             Sandeep Jangde (Centre Head): 83499 02843<br>
                             Dheeraj Jangde (Manager): 93432 25522</p>
@@ -2172,11 +1497,7 @@
                             <i class="fas fa-envelope" aria-hidden="true"></i>
                         </div>
                         <div class="info-content">
-                            <h3>
-                                <span class="english">Email Address</span>
-                                <span class="hindi">ईमेल पता</span>
-                                <span class="hinglish">Email address</span>
-                            </h3>
+                            <h3>Email Address</h3>
                             <p>info.gceiofficial@gmail.com</p>
                         </div>
                     </div>
@@ -2186,138 +1507,61 @@
                             <i class="far fa-clock" aria-hidden="true"></i>
                         </div>
                         <div class="info-content">
-                            <h3>
-                                <span class="english">Working Hours</span>
-                                <span class="hindi">कार्य घंटे</span>
-                                <span class="hinglish">Working hours</span>
-                            </h3>
-                            <p>
-                                <span class="english">Monday - Saturday: 9:00 AM - 7:00 PM<br>
-                                Sunday: 10:00 AM - 2:00 PM</span>
-                                <span class="hindi">सोमवार - शनिवार: सुबह 9:00 - शाम 7:00<br>
-                                रविवार: सुबह 10:00 - दोपहर 2:00</span>
-                                <span class="hinglish">Monday - Saturday: Subah 9:00 - Shaam 7:00<br>
-                                Sunday: Subah 10:00 - Dopahar 2:00</span>
-                            </p>
+                            <h3>Working Hours</h3>
+                            <p>Monday - Saturday: 9:00 AM - 7:00 PM<br>
+                            Sunday: 10:00 AM - 2:00 PM</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="contact-form">
-                    <h3>
-                        <span class="english">Admission Inquiry Form</span>
-                        <span class="hindi">प्रवेश पूछताछ फॉर्म</span>
-                        <span class="hinglish">Admission inquiry form</span>
-                    </h3>
+                    <h3>Admission Inquiry Form</h3>
                     <form id="inquiryForm" aria-label="Admission inquiry form">
                         <div class="form-group">
-                            <label for="name">
-                                <span class="english">Full Name *</span>
-                                <span class="hindi">पूरा नाम *</span>
-                                <span class="hinglish">Full name *</span>
-                            </label>
+                            <label for="name">Full Name *</label>
                             <input type="text" id="name" class="form-control" required aria-required="true">
-                            <div class="error-message" id="nameError">
-                                <span class="english">Please enter your full name</span>
-                                <span class="hindi">कृपया अपना पूरा नाम दर्ज करें</span>
-                                <span class="hinglish">Kripya apna full name daalein</span>
-                            </div>
+                            <div class="error-message" id="nameError">Please enter your full name</div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="phone">
-                                <span class="english">Phone Number *</span>
-                                <span class="hindi">फोन नंबर *</span>
-                                <span class="hinglish">Phone number *</span>
-                            </label>
+                            <label for="phone">Phone Number *</label>
                             <input type="tel" id="phone" class="form-control" required aria-required="true" pattern="[0-9]{10}" maxlength="10">
-                            <div class="error-message" id="phoneError">
-                                <span class="english">Please enter a valid 10-digit phone number</span>
-                                <span class="hindi">कृपया एक मान्य 10-अंकीय फोन नंबर दर्ज करें</span>
-                                <span class="hinglish">Kripya ek valid 10-digit phone number daalein</span>
-                            </div>
+                            <div class="error-message" id="phoneError">Please enter a valid 10-digit phone number</div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="course">
-                                <span class="english">Course Interested In *</span>
-                                <span class="hindi">रुचि वाला कोर्स *</span>
-                                <span class="hinglish">Interest wala course *</span>
-                            </label>
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" aria-describedby="emailHelp">
+                            <div class="error-message" id="emailError">Please enter a valid email address</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="course">Course Interested In *</label>
                             <select id="course" class="form-control" required aria-required="true">
-                                <option value="">
-                                    <span class="english">Select a course</span>
-                                    <span class="hindi">एक कोर्स चुनें</span>
-                                    <span class="hinglish">Ek course choose karein</span>
-                                </option>
-                                <option value="Basic Computer">
-                                    <span class="english">Basic Computer</span>
-                                    <span class="hindi">बेसिक कंप्यूटर</span>
-                                    <span class="hinglish">Basic Computer</span>
-                                </option>
-                                <option value="MS Office">
-                                    <span class="english">MS Office</span>
-                                    <span class="hindi">एमएस ऑफिस</span>
-                                    <span class="hinglish">MS Office</span>
-                                </option>
-                                <option value="Tally Prime">
-                                    <span class="english">Tally Prime GST</span>
-                                    <span class="hindi">टैली प्राइम जीएसटी</span>
-                                    <span class="hinglish">Tally Prime GST</span>
-                                </option>
-                                <option value="DCA">
-                                    <span class="english">DCA</span>
-                                    <span class="hindi">डीसीए</span>
-                                    <span class="hinglish">DCA</span>
-                                </option>
-                                <option value="PGDCA">
-                                    <span class="english">PGDCA</span>
-                                    <span class="hindi">पीजीडीसीए</span>
-                                    <span class="hinglish">PGDCA</span>
-                                </option>
-                                <option value="Photoshop">
-                                    <span class="english">Photoshop</span>
-                                    <span class="hindi">फोटोशॉप</span>
-                                    <span class="hinglish">Photoshop</span>
-                                </option>
-                                <option value="Canva">
-                                    <span class="english">Canva Design</span>
-                                    <span class="hindi">कैनवा डिज़ाइन</span>
-                                    <span class="hinglish">Canva Design</span>
-                                </option>
-                                <option value="AI ChatGPT">
-                                    <span class="english">AI ChatGPT</span>
-                                    <span class="hindi">एआई चैटजीपीटी</span>
-                                    <span class="hinglish">AI ChatGPT</span>
-                                </option>
+                                <option value="">Select a course</option>
+                                <option value="Basic Computer">Basic Computer</option>
+                                <option value="MS Office">MS Office</option>
+                                <option value="Tally Prime">Tally Prime GST</option>
+                                <option value="DCA">DCA</option>
+                                <option value="PGDCA">PGDCA</option>
+                                <option value="Photoshop">Photoshop</option>
+                                <option value="Canva">Canva Design</option>
+                                <option value="AI ChatGPT">AI ChatGPT</option>
+                                <option value="Other">Other</option>
                             </select>
-                            <div class="error-message" id="courseError">
-                                <span class="english">Please select a course</span>
-                                <span class="hindi">कृपया एक कोर्स चुनें</span>
-                                <span class="hinglish">Kripya ek course choose karein</span>
-                            </div>
+                            <div class="error-message" id="courseError">Please select a course</div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="message">
-                                <span class="english">Message / Query</span>
-                                <span class="hindi">संदेश / प्रश्न</span>
-                                <span class="hinglish">Message / Query</span>
-                            </label>
+                            <label for="message">Message / Query</label>
                             <textarea id="message" class="form-control" placeholder="Your message here..." aria-label="Additional message"></textarea>
                         </div>
                         
                         <div class="spinner" id="formSpinner"></div>
                         
-                        <button type="submit" class="btn btn-primary" id="submitBtn">
-                            <span class="english">Submit Inquiry</span>
-                            <span class="hindi">पूछताछ जमा करें</span>
-                            <span class="hinglish">Inquiry submit karein</span>
-                        </button>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">Submit Inquiry</button>
                         <div id="formSuccess" style="display:none; color: green; margin-top: 15px; font-weight: 600;">
-                            <span class="english">Thank you! We will contact you soon.</span>
-                            <span class="hindi">धन्यवाद! हम जल्द ही आपसे संपर्क करेंगे।</span>
-                            <span class="hinglish">Thank you! Hum jald hi aapse contact karenge.</span>
+                            Thank you! We will contact you soon.
                         </div>
                     </form>
                 </div>
@@ -2347,49 +1591,22 @@
                             <span>Education Institute</span>
                         </div>
                     </a>
-                    <p style="margin-top: 15px; color: #b2dfdb;">
-                        <span class="english">Providing quality computer education since 2015 in Bilha, Bilaspur.</span>
-                        <span class="hindi">2015 से बिल्हा, बिलासपुर में गुणवत्तापूर्ण कंप्यूटर शिक्षा प्रदान कर रहे हैं।</span>
-                        <span class="hinglish">2015 se Bilha, Bilaspur mein quality computer education provide kar rahe hain.</span>
-                    </p>
+                    <p style="margin-top: 15px; color: #b2dfdb;">Providing quality computer education since 2015 in Bilha, Bilaspur.</p>
                 </div>
                 
                 <div class="footer-links">
-                    <h3>
-                        <span class="english">Quick Links</span>
-                        <span class="hindi">त्वरित लिंक</span>
-                        <span class="hinglish">Quick links</span>
-                    </h3>
+                    <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#home">
-                            <span class="english">Home</span>
-                            <span class="hindi">होम</span>
-                            <span class="hinglish">Home</span>
-                        </a></li>
-                        <li><a href="#about">
-                            <span class="english">About Us</span>
-                            <span class="hindi">हमारे बारे में</span>
-                            <span class="hinglish">About Us</span>
-                        </a></li>
-                        <li><a href="#courses">
-                            <span class="english">Courses</span>
-                            <span class="hindi">कोर्सेज</span>
-                            <span class="hinglish">Courses</span>
-                        </a></li>
-                        <li><a href="#contact">
-                            <span class="english">Contact</span>
-                            <span class="hindi">संपर्क</span>
-                            <span class="hinglish">Contact</span>
-                        </a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-social">
-                    <h3>
-                        <span class="english">Connect With Us</span>
-                        <span class="hindi">हमसे जुड़ें</span>
-                        <span class="hinglish">Humse judein</span>
-                    </h3>
+                    <h3>Connect With Us</h3>
                     <div class="social-icons">
                         <a href="https://www.facebook.com/gceiofficial/" class="social-icon" target="_blank" aria-label="Facebook">
                             <i class="fab fa-facebook-f" aria-hidden="true"></i>
@@ -2403,15 +1620,42 @@
                         <a href="https://www.youtube.com/channel/UCebEVcrSsWWxWr2qVGRLk6w" class="social-icon" target="_blank" aria-label="YouTube">
                             <i class="fab fa-youtube" aria-hidden="true"></i>
                         </a>
+                        <a href="https://maps.app.goo.gl/sYdLaS4EFBz9a4go6" class="social-icon" target="_blank" aria-label="Google Maps">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://jsdl.in/DT-99QYUEQ2AEE" class="social-icon" target="_blank" aria-label="Reviews">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </a>
                     </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; <span id="currentYear"></span> Guru Computer Education Institute. All Rights Reserved.</p>
+                <p>&copy; 2024 Guru Computer Education Institute. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: #ff6b6b;" aria-hidden="true"></i></p>
             </div>
         </div>
     </footer>
+
+    <!-- ===== MODAL FOR IMAGES ===== -->
+    <div class="modal" id="imageModal" role="dialog" aria-modal="true" aria-label="Image preview">
+        <span class="close-modal" id="closeModal" aria-label="Close modal">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+        </div>
+    </div>
+
+    <!-- ===== FLOATING BUTTONS ===== -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/919244240484" class="floating-btn whatsapp-btn" target="_blank" aria-label="Contact on WhatsApp">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+        </a>
+        <a href="tel:9244240484" class="floating-btn" aria-label="Call us">
+            <i class="fas fa-phone" aria-hidden="true"></i>
+        </a>
+        <a href="#contact" class="floating-btn" aria-label="Send email">
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+        </a>
+    </div>
 
     <!-- ===== BACK TO TOP ===== -->
     <a href="#home" class="back-to-top" id="backToTop" aria-label="Back to top">
@@ -2419,45 +1663,7 @@
     </a>
 
     <script>
-        // Set current year in footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Language Switching Functionality
-        const body = document.body;
-        const langEn = document.getElementById('langEn');
-        const langHi = document.getElementById('langHi');
-        const langHin = document.getElementById('langHin');
-        
-        function switchLanguage(lang) {
-            // Remove all language classes
-            body.classList.remove('english', 'hindi', 'hinglish');
-            
-            // Add selected language class
-            body.classList.add(lang);
-            
-            // Update active button
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            if(lang === 'english') langEn.classList.add('active');
-            if(lang === 'hindi') langHi.classList.add('active');
-            if(lang === 'hinglish') langHin.classList.add('active');
-            
-            // Store language preference in localStorage
-            localStorage.setItem('preferredLanguage', lang);
-        }
-        
-        // Language button click events
-        langEn.addEventListener('click', () => switchLanguage('english'));
-        langHi.addEventListener('click', () => switchLanguage('hindi'));
-        langHin.addEventListener('click', () => switchLanguage('hinglish'));
-        
-        // Load preferred language from localStorage
-        const savedLang = localStorage.getItem('preferredLanguage') || 'english';
-        switchLanguage(savedLang);
-
-        // Mobile Menu Toggle
+        // Mobile Menu Toggle with Accessibility
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.getElementById('navLinks');
         
@@ -2513,47 +1719,6 @@
             return emailRegex.test(email);
         }
         
-        // Get error message based on current language
-        function getErrorMessage(field, lang) {
-            const messages = {
-                'name': {
-                    'english': 'Please enter your full name',
-                    'hindi': 'कृपया अपना पूरा नाम दर्ज करें',
-                    'hinglish': 'Kripya apna full name daalein'
-                },
-                'phone': {
-                    'english': 'Please enter a valid 10-digit phone number',
-                    'hindi': 'कृपया एक मान्य 10-अंकीय फोन नंबर दर्ज करें',
-                    'hinglish': 'Kripya ek valid 10-digit phone number daalein'
-                },
-                'email': {
-                    'english': 'Please enter a valid email address',
-                    'hindi': 'कृपया एक मान्य ईमेल पता दर्ज करें',
-                    'hinglish': 'Kripya ek valid email address daalein'
-                },
-                'course': {
-                    'english': 'Please select a course',
-                    'hindi': 'कृपया एक कोर्स चुनें',
-                    'hinglish': 'Kripya ek course choose karein'
-                }
-            };
-            
-            const currentLang = body.classList.contains('english') ? 'english' : 
-                              body.classList.contains('hindi') ? 'hindi' : 'hinglish';
-            return messages[field][currentLang];
-        }
-        
-        // Get success message based on current language
-        function getSuccessMessage(lang) {
-            const messages = {
-                'english': 'Thank you! We will contact you soon.',
-                'hindi': 'धन्यवाद! हम जल्द ही आपसे संपर्क करेंगे।',
-                'hinglish': 'Thank you! Hum jald hi aapse contact karenge.'
-            };
-            
-            return messages[lang];
-        }
-        
         inquiryForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -2575,22 +1740,28 @@
             
             // Validate name
             if (!name) {
-                showError('nameError', getErrorMessage('name', body.className));
+                showError('nameError', 'Please enter your full name');
                 isValid = false;
             }
             
             // Validate phone
             if (!phone) {
-                showError('phoneError', getErrorMessage('phone', body.className));
+                showError('phoneError', 'Please enter your phone number');
                 isValid = false;
             } else if (!validatePhone(phone)) {
-                showError('phoneError', getErrorMessage('phone', body.className));
+                showError('phoneError', 'Please enter a valid 10-digit phone number');
+                isValid = false;
+            }
+            
+            // Validate email (optional)
+            if (email && !validateEmail(email)) {
+                showError('emailError', 'Please enter a valid email address');
                 isValid = false;
             }
             
             // Validate course
             if (!course) {
-                showError('courseError', getErrorMessage('course', body.className));
+                showError('courseError', 'Please select a course');
                 isValid = false;
             }
             
@@ -2605,43 +1776,20 @@
             // Simulate API call delay
             await new Promise(resolve => setTimeout(resolve, 1500));
             
-            // Create WhatsApp message based on current language
-            let whatsappMessage;
-            const currentLang = body.classList.contains('english') ? 'english' : 
-                              body.classList.contains('hindi') ? 'hindi' : 'hinglish';
-            
-            if (currentLang === 'hindi') {
-                whatsappMessage = `🎓 *गुरु कंप्यूटर एजुकेशन इंस्टीट्यूट - प्रवेश पूछताछ*%0A%0A` +
-                                  `*नाम:* ${name}%0A` +
-                                  `*फोन:* ${phone}%0A` +
-                                  (email ? `*ईमेल:* ${email}%0A` : '') +
-                                  `*रुचि वाला कोर्स:* ${course}%0A` +
-                                  (message ? `*संदेश:* ${message}%0A` : '') +
-                                  `%0Aमैं इस कोर्स और प्रवेश प्रक्रिया के बारे में अधिक जानना चाहूंगा।`;
-            } else if (currentLang === 'hinglish') {
-                whatsappMessage = `🎓 *Guru Computer Education Institute - Admission Inquiry*%0A%0A` +
-                                  `*Name:* ${name}%0A` +
-                                  `*Phone:* ${phone}%0A` +
-                                  (email ? `*Email:* ${email}%0A` : '') +
-                                  `*Course Interested In:* ${course}%0A` +
-                                  (message ? `*Message:* ${message}%0A` : '') +
-                                  `%0AMain is course aur admission process ke baare mein aur janna chahta/chahti hoon.`;
-            } else {
-                whatsappMessage = `🎓 *Guru Computer Education Institute - Admission Inquiry*%0A%0A` +
+            // Create WhatsApp message
+            const whatsappMessage = `🎓 *Guru Computer Education Institute - Admission Inquiry*%0A%0A` +
                                   `*Name:* ${name}%0A` +
                                   `*Phone:* ${phone}%0A` +
                                   (email ? `*Email:* ${email}%0A` : '') +
                                   `*Course Interested In:* ${course}%0A` +
                                   (message ? `*Message:* ${message}%0A` : '') +
                                   `%0AI would like to know more about this course and admission process.`;
-            }
             
             // Reset form
             inquiryForm.reset();
             
             // Hide spinner and show success message
             formSpinner.style.display = 'none';
-            formSuccess.textContent = getSuccessMessage(currentLang);
             formSuccess.style.display = 'block';
             
             // Redirect to WhatsApp after delay
@@ -2657,9 +1805,18 @@
             const phone = e.target.value.replace(/\D/g, '');
             e.target.value = phone;
             if (phone && !validatePhone(phone)) {
-                showError('phoneError', getErrorMessage('phone', body.className));
+                showError('phoneError', 'Please enter a valid 10-digit phone number');
             } else {
                 hideError('phoneError');
+            }
+        });
+        
+        document.getElementById('email').addEventListener('blur', function(e) {
+            const email = e.target.value.trim();
+            if (email && !validateEmail(email)) {
+                showError('emailError', 'Please enter a valid email address');
+            } else {
+                hideError('emailError');
             }
         });
         
@@ -2677,6 +1834,9 @@
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
+                    
+                    // Update URL without page reload
+                    history.pushState(null, null, targetId);
                 }
             });
         });
@@ -2745,10 +1905,107 @@
         // Initialize first testimonial
         showTestimonial(0);
         
+        // Image gallery modal
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const closeModal = document.getElementById('closeModal');
+        
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.addEventListener('click', () => {
+                modalImage.src = img.src;
+                modalImage.alt = img.alt;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        modal.addEventListener('click', (e) => {
+            if(e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Escape key to close modal
+        document.addEventListener('keydown', (e) => {
+            if(e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Lazy loading for images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src || img.src;
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+            
+            document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+        
+        // Print functionality
+        window.addEventListener('beforeprint', () => {
+            document.querySelectorAll('.floating-buttons, .back-to-top, .mobile-menu-btn').forEach(el => {
+                el.style.display = 'none';
+            });
+        });
+        
+        // Reduced motion preference
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.querySelectorAll('*').forEach(el => {
+                el.style.animationDuration = '0.01ms';
+                el.style.animationIterationCount = '1';
+                el.style.transitionDuration = '0.01ms';
+            });
+        }
+        
+        // Service Worker registration (for PWA capabilities)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(error => {
+                    console.log('ServiceWorker registration failed:', error);
+                });
+            });
+        }
+        
         // Initialize on page load
         window.addEventListener('DOMContentLoaded', () => {
-            // Force a reflow to ensure proper display
-            document.body.offsetHeight;
+            // Set current year in footer
+            document.querySelector('.footer-bottom p').innerHTML = 
+                document.querySelector('.footer-bottom p').innerHTML.replace('2024', new Date().getFullYear());
+            
+            // Add focus styles for keyboard navigation
+            document.addEventListener('keyup', (e) => {
+                if (e.key === 'Tab') {
+                    document.documentElement.classList.add('keyboard-nav');
+                }
+            });
+            
+            document.addEventListener('mousedown', () => {
+                document.documentElement.classList.remove('keyboard-nav');
+            });
+        });
+        
+        // Performance optimization
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                // Handle resize events
+            }, 250);
         });
     </script>
 </body>
