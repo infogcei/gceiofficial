@@ -3,1208 +3,2780 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guru Computer Education Institute - Admission Form</title>
+    <title>Guru Computer Education Institute - Bilha, Bilaspur</title>
+    <meta name="description" content="Guru Computer Education Institute, Bilha, Bilaspur (C.G.) – Since 2015. Professional Computer Courses: Basic Computer, MS Office, Tally, DCA, PGDCA, Typing, Photoshop, Canva, AI ChatGPT.">
+    <meta name="keywords" content="computer institute, bilaspur, computer course, tally course, dca, pgdca, photoshop, computer training, bilha, chhattisgarh computer classes">
+    <meta name="author" content="Guru Computer Education Institute">
+    
+    <!-- Open Graph for Social Media -->
+    <meta property="og:title" content="Guru Computer Education Institute - Bilha, Bilaspur">
+    <meta property="og:description" content="Since 2015 - Professional Computer Courses in Bilha, Bilaspur">
+    <meta property="og:type" content="website">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- PDF Generation Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
-        :root {
-            --primary-blue: #1a2a6c;
-            --secondary-blue: #2a4d8e;
-            --light-blue: #e8f4ff;
-            --white: #ffffff;
-            --gray: #f5f7fa;
-            --dark-gray: #444;
-            --success: #0d8b4e;
-            --whatsapp: #25D366;
-            --accent: #d4af37;
-            --payment: #8e44ad;
-        }
-        
+        /* ===== ROOT & RESET ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', 'Arial', 'Nirmala UI', sans-serif;
+        }
+
+        :root {
+            --primary-color: #00695c;
+            --primary-dark: #004d40;
+            --primary-light: #4db6ac;
+            --secondary-color: #ff9800;
+            --secondary-dark: #f57c00;
+            --accent-color: #d32f2f;
+            --light-bg: #f1f8e9;
+            --dark-text: #333333;
+            --light-text: #ffffff;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+            --shadow-heavy: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
         }
 
         body {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-            color: #333;
-            padding: 20px;
-            min-height: 100vh;
+            background-color: #f9f9f9;
+            color: var(--dark-text);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 1000px;
+            width: 100%;
+            max-width: 1200px;
             margin: 0 auto;
-            background: var(--white);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 0 20px;
         }
 
-        header {
-            background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
-            color: var(--white);
-            padding: 25px 20px;
-            text-align: center;
-            position: relative;
+        section {
+            padding: 80px 0;
         }
 
-        .institute-name {
-            font-size: 32px; /* Increased from 24px to 32px */
+        h1, h2, h3, h4 {
+            color: var(--primary-dark);
             font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-        }
-
-        .address, .contact {
-            font-size: 16px; /* Slightly increased for better proportion */
-            margin: 5px 0;
-            opacity: 0.9;
-        }
-
-        .welcome-message {
-            background: var(--light-blue);
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 25px;
-            text-align: center;
-            border-left: 4px solid var(--secondary-blue);
-        }
-
-        .form-container {
-            padding: 20px;
-        }
-
-        .form-section {
-            margin-bottom: 25px;
-            padding: 15px;
-            border-radius: 10px;
-            background: var(--gray);
-            border-left: 5px solid var(--secondary-blue);
         }
 
         .section-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--secondary-blue);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .section-title i {
-            margin-right: 10px;
-            font-size: 20px;
-        }
-
-        .form-row {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 0 -8px;
-        }
-
-        .form-group {
-            flex: 1 0 280px;
-            padding: 0 8px;
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: 600;
-            color: var(--dark-gray);
-            font-size: 14px;
-        }
-
-        .required::after {
-            content: " *";
-            color: red;
-        }
-
-        input[type="text"], input[type="date"], input[type="email"], input[type="tel"], input[type="number"], textarea, select {
-            width: 100%;
-            padding: 10px 12px;
-            border: 2px solid #ddd;
-            border-radius: 6px;
-            font-size: 14px;
-        }
-
-        input:focus, textarea:focus, select:focus {
-            border-color: var(--secondary-blue);
-            outline: none;
-        }
-
-        .file-upload {
-            width: 100%;
-            padding: 10px 12px;
-            border: 2px solid #ddd;
-            border-radius: 6px;
-            font-size: 14px;
-            background: white;
-        }
-
-        .file-upload:hover {
-            border-color: var(--secondary-blue);
-        }
-
-        .file-preview {
-            margin-top: 8px;
-            min-height: 40px;
-        }
-
-        .file-preview img {
-            max-width: 150px;
-            max-height: 150px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            margin-right: 10px;
-            margin-top: 5px;
-        }
-
-        .file-preview div {
-            padding: 8px;
-            background: #f0f0f0;
-            border-radius: 5px;
-            font-size: 12px;
-            margin-top: 5px;
-        }
-
-        .photo-requirements {
-            font-size: 12px;
-            color: #666;
-            margin-top: 5px;
-        }
-
-        .payment-section {
-            background: #f9f0ff;
-            border-left: 5px solid var(--payment);
-        }
-
-        .payment-option {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .payment-option:hover {
-            border-color: var(--payment);
-        }
-
-        .payment-option.selected {
-            border-color: var(--payment);
-            background: #f3e8ff;
-        }
-
-        .payment-icon {
-            font-size: 24px;
-            margin-right: 15px;
-            color: var(--payment);
-        }
-
-        .payment-info {
-            flex: 1;
-        }
-
-        .payment-name {
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .payment-desc {
-            font-size: 12px;
-            color: var(--dark-gray);
-        }
-
-        .upi-id {
-            background: #e8f4ff;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-            font-weight: 600;
             text-align: center;
-            display: none;
+            margin-bottom: 50px;
         }
 
-        .submit-btn {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background: var(--success);
-            color: var(--white);
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            background: #0a6e3d;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .submit-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .success-message {
-            display: none;
-            text-align: center;
-            padding: 40px 30px;
-        }
-
-        .success-icon {
-            font-size: 80px;
-            color: var(--success);
-            margin-bottom: 20px;
-            animation: bounce 1s ease-in-out;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-20px);}
-            60% {transform: translateY(-10px);}
-        }
-
-        .success-message h2 {
-            color: var(--success);
+        .section-title h2 {
+            font-size: 36px;
             margin-bottom: 15px;
-            font-size: 32px;
-        }
-
-        .success-message p {
-            font-size: 18px;
-            margin-bottom: 12px;
-            color: var(--dark-gray);
-        }
-
-        .student-id {
-            background: #ecfdf5;
-            color: #065f46;
-            padding: 15px 25px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 20px;
-            margin: 25px 0;
+            position: relative;
             display: inline-block;
-            border: 2px solid #a7f3d0;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
-        .student-info {
-            background: var(--light-blue);
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            text-align: left;
-            border-left: 4px solid var(--secondary-blue);
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
         }
 
-        .info-row {
-            display: flex;
-            margin-bottom: 10px;
-            padding: 8px 0;
-            border-bottom: 1px solid #e2e8f0;
+        .section-title p {
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
-        .info-label {
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
             font-weight: 600;
-            color: var(--primary-blue);
-            width: 150px;
-            flex-shrink: 0;
-        }
-
-        .info-value {
-            color: var(--dark-gray);
-            flex: 1;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin: 30px 0;
-            flex-wrap: wrap;
-        }
-
-        .action-btn {
-            padding: 12px 25px;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
             border: none;
-            border-radius: 8px;
             font-size: 16px;
-            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--light-text);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background: var(--secondary-color);
+            color: var(--light-text);
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* ===== LANGUAGE SWITCHER ===== */
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+        }
+
+        .lang-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 8px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .action-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-
-        .download-btn {
-            background: var(--secondary-blue);
-            color: white;
-        }
-
-        .whatsapp-btn {
-            background: var(--whatsapp);
-            color: white;
-        }
-
-        .new-form-btn {
-            background: var(--success);
-            color: white;
-        }
-
-        .footer-note {
-            text-align: center;
-            margin-top: 25px;
-            padding: 20px;
-            background: var(--light-blue);
-            border-radius: 8px;
             font-weight: 600;
-            color: var(--secondary-blue);
+            transition: var(--transition);
         }
 
-        .tagline {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--accent);
-            margin: 8px 0;
-            font-style: italic;
+        .lang-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
         }
 
-        .next-steps {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-            text-align: left;
+        /* ===== HEADER & NAVBAR ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--light-text);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: var(--transition);
         }
 
-        .next-steps h3 {
-            color: #856404;
-            margin-bottom: 15px;
+        .header-scrolled {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            padding: 5px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            position: relative;
+        }
+
+        .logo {
             display: flex;
             align-items: center;
             gap: 10px;
+            text-decoration: none;
         }
 
-        .next-steps ul {
-            padding-left: 20px;
-        }
-
-        .next-steps li {
-            margin-bottom: 10px;
-            color: #856404;
-        }
-
-        .spinner {
-            display: none;
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-left-color: var(--secondary-blue);
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 15px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-text);
+            font-size: 22px;
+            font-weight: bold;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        .logo-text {
+            color: var(--primary-dark);
         }
 
-        .debug-info {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 10px 0;
-            font-size: 12px;
-            display: none;
+        .logo-text h1 {
+            font-size: 22px;
+            margin: 0;
+            line-height: 1.2;
         }
 
-        .status-message {
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            text-align: center;
+        .logo-text span {
+            font-size: 14px;
+            color: var(--secondary-color);
             font-weight: 600;
         }
 
-        .status-success {
-            background: #d1fae5;
-            color: #065f46;
-            border: 1px solid #a7f3d0;
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
         }
 
-        .status-error {
-            background: #fee2e2;
-            color: #dc2626;
-            border: 1px solid #fecaca;
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 600;
+            font-size: 16px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding-top: 150px;
+            background: linear-gradient(rgba(0, 77, 64, 0.9), rgba(0, 105, 92, 0.9)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--light-text);
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--light-text);
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 22px;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tagline {
+            font-size: 24px;
+            color: #FFD700;
+            font-weight: 600;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .experience-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #333;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(255, 165, 0, 0.3);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about {
+            background: var(--light-bg);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 17px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: var(--light-text);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--light-text);
+            font-size: 30px;
+        }
+
+        /* ===== COURSES SECTION ===== */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            background: var(--light-text);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .course-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: var(--light-text);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .course-header h3 {
+            color: var(--light-text);
+            font-size: 22px;
+        }
+
+        .course-body {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-body ul {
+            list-style: none;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .course-body li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .course-body li i {
+            color: var(--primary-color);
+            flex-shrink: 0;
+            font-size: 14px;
+        }
+
+        .course-duration {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+        }
+
+        .course-fee {
+            color: var(--primary-dark);
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+        }
+
+        /* ===== BILINGUAL CONTENT ===== */
+        .hindi {
+            display: none;
+        }
+
+        body.hindi .english {
+            display: none;
+        }
+
+        body.hindi .hindi {
+            display: block;
+        }
+
+        body.hindi .hindi-inline {
+            display: inline;
+        }
+
+        /* ===== TEAM SECTION ===== */
+        .team {
+            background: var(--light-bg);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background: var(--light-text);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            text-align: center;
+            padding: 30px;
+            transition: var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-text);
+            font-size: 40px;
+            font-weight: bold;
+            border: 5px solid var(--light-bg);
+        }
+
+        .team-info h3 {
+            margin-bottom: 10px;
+        }
+
+        .team-info p {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .team-contact {
+            margin-top: 15px;
+        }
+
+        .team-contact a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary-light);
+            color: var(--light-text);
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .team-contact a:hover {
+            background: var(--primary-color);
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            min-height: 300px;
+        }
+
+        .testimonial-card {
+            background: var(--light-text);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            margin: 20px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .testimonial-card.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .testimonial-text {
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            line-height: 1.8;
+        }
+
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 40px;
+            color: var(--primary-light);
+            position: absolute;
+            opacity: 0.3;
+        }
+
+        .testimonial-text::before {
+            top: -20px;
+            left: -10px;
+        }
+
+        .testimonial-text::after {
+            bottom: -40px;
+            right: -10px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+            color: var(--light-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .testimonial-dot.active {
+            background: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            height: 250px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+            transform-origin: center;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            background: var(--light-bg);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-text);
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .info-content h3 {
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+
+        .contact-form {
+            background: var(--light-text);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(0, 105, 92, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .error-message {
+            color: var(--accent-color);
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .form-control.error {
+            border-color: var(--accent-color);
+        }
+
+        .form-control.error:focus {
+            box-shadow: 0 0 0 2px rgba(211, 47, 47, 0.2);
+        }
+
+        /* ===== MAP SECTION ===== */
+        .map-container {
+            margin-top: 60px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+            display: block;
+        }
+
+        /* ===== LOADING SPINNER ===== */
+        .spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            margin: 10px auto;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary-dark);
+            color: var(--light-text);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo .logo-text h1 {
+            color: var(--light-text);
+        }
+
+        .footer-links h3,
+        .footer-social h3 {
+            color: var(--light-text);
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #b2dfdb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--light-text);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-text);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #b2dfdb;
+        }
+
+        /* ===== FLOATING BUTTONS ===== */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
+        }
+
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: var(--light-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 24px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .floating-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+        }
+
+        /* ===== BACK TO TOP ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+
+        /* ===== MODAL FOR IMAGES ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--secondary-color);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 40px;
+            }
+            
+            .section-title h2 {
+                font-size: 32px;
+            }
+            
+            .hero {
+                background-attachment: scroll;
+            }
+            
+            .language-switcher {
+                position: static;
+                margin-top: 10px;
+                text-align: center;
+            }
         }
 
         @media (max-width: 768px) {
-            .form-group {
-                flex: 1 0 100%;
+            .mobile-menu-btn {
+                display: block;
             }
             
-            .form-row {
-                margin: 0;
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                flex-direction: column;
+                background: var(--light-text);
+                padding: 80px 30px 30px;
+                box-shadow: var(--shadow-heavy);
+                transition: var(--transition);
+                gap: 20px;
+                z-index: 1000;
             }
             
-            .action-buttons {
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links a {
+                font-size: 18px;
+                padding: 10px;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .nav-links a::after {
+                display: none;
+            }
+            
+            .hero {
+                padding-top: 130px;
+                background-attachment: scroll;
+            }
+            
+            .hero-content h1 {
+                font-size: 32px;
+            }
+            
+            .hero-content p {
+                font-size: 18px;
+            }
+            
+            .tagline {
+                font-size: 20px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .hero-buttons {
                 flex-direction: column;
                 align-items: center;
             }
             
-            .action-btn {
+            .btn {
                 width: 100%;
-                max-width: 280px;
-                justify-content: center;
+                max-width: 300px;
+                text-align: center;
             }
             
-            .info-row {
-                flex-direction: column;
+            .floating-buttons {
+                bottom: 20px;
+                right: 20px;
             }
             
-            .info-label {
-                width: 100%;
-                margin-bottom: 5px;
+            .back-to-top {
+                bottom: 20px;
+                left: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 28px;
             }
             
-            .success-message h2 {
-                font-size: 26px;
-            }
-            
-            .student-id {
+            .tagline {
                 font-size: 18px;
-                padding: 12px 20px;
             }
             
-            .institute-name {
-                font-size: 26px; /* Slightly smaller on mobile */
+            .experience-badge {
+                font-size: 14px;
+                padding: 10px 20px;
             }
             
-            .address, .contact {
-                font-size: 14px; /* Slightly smaller on mobile */
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .contact-form {
+                padding: 25px;
+            }
+            
+            .testimonial-card {
+                padding: 25px;
+                margin: 10px;
+            }
+            
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+            
+            body {
+                font-size: 15px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            h2 {
+                font-size: 22px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .floating-buttons,
+            .back-to-top,
+            .mobile-menu-btn,
+            .language-switcher {
+                display: none !important;
+            }
+            
+            .hero {
+                background: #00695c !important;
+                color: #000 !important;
+                padding-top: 50px;
+            }
+            
+            a {
+                text-decoration: none;
+                color: #000;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <div class="institute-name">Guru Computer Education Institute</div>
-            <div class="address">Near Police Station, Dagori Road, Bilha, Bilaspur (C.G.)</div>
-            <div class="contact">Phone: 9244240484</div>
-        </header>
+<body class="english">
+    <!-- ===== LANGUAGE SWITCHER ===== -->
+    <div class="language-switcher">
+        <button class="lang-btn" id="langToggle">
+            <i class="fas fa-language"></i>
+            <span class="english">Switch to Hindi</span>
+            <span class="hindi" style="display: none;">Switch to English</span>
+        </button>
+    </div>
 
-        <!-- Welcome Message -->
-        <div class="welcome-message hindi-text">
-            <p><strong>Namaste! Main Vani Hoon, Guru Computer Education Institute, Bilha mein aapka swagat hai.</strong></p>
-            <p>Kripya admission form bhar kar submit karen. Form verify hone par hum aapko jald hi contact karenge.</p>
-        </div>
-
-        <!-- Status Message -->
-        <div class="status-message" id="statusMessage" style="display: none;"></div>
-        
-        <!-- Admission Form -->
-        <div class="form-container" id="admissionForm">
-            <!-- Debug Info -->
-            <div class="debug-info" id="debugInfo"></div>
-
-            <!-- Student Details Section -->
-            <div class="form-section">
-                <div class="section-title"><i class="fas fa-user-graduate"></i> Student Details</div>
+    <!-- ===== HEADER ===== -->
+    <header id="mainHeader">
+        <div class="container">
+            <nav class="navbar" aria-label="Main Navigation">
+                <a href="#home" class="logo" aria-label="Guru Computer Education Institute Home">
+                    <div class="logo-icon">G</div>
+                    <div class="logo-text">
+                        <h1>Guru Computer</h1>
+                        <span>Education Institute</span>
+                    </div>
+                </a>
                 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="fullName" class="required">Full Name</label>
-                        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="fatherName">Father / Guardian Name</label>
-                        <input type="text" id="fatherName" name="fatherName" placeholder="Enter father/guardian name">
-                    </div>
-                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="navLinks">
+                    <i class="fas fa-bars"></i>
+                </button>
                 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="mobile" class="required">Mobile Number</label>
-                        <input type="tel" id="mobile" name="mobile" placeholder="Enter 10-digit mobile number" pattern="[0-9]{10}" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="whatsapp" class="required">WhatsApp Number</label>
-                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="Enter WhatsApp number" pattern="[0-9]{10}" required>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="gender" class="required">Gender</label>
-                        <select id="gender" name="gender" required>
-                            <option value="">Select Gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="dob">Date of Birth</label>
-                        <input type="date" id="dob" name="dob">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="address" class="required">Address</label>
-                    <textarea id="address" name="address" rows="2" placeholder="Enter your complete address" required></textarea>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="aadhar" class="required">Aadhar Number</label>
-                        <input type="number" id="aadhar" name="aadhar" placeholder="Enter 12-digit Aadhar number" required min="100000000000" max="999999999999">
-                        <small style="color: #666; font-size: 12px;">कृपया 12 अंकों का आधार नंबर दर्ज करें</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="Enter email address">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Course Details Section -->
-            <div class="form-section">
-                <div class="section-title"><i class="fas fa-laptop-code"></i> Course Details</div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="course" class="required">Select Course</label>
-                        <select id="course" name="course" required>
-                            <option value="">Select a course</option>
-                            <option value="Basic Computer Course">Basic Computer Course</option>
-                            <option value="MS Office (Word, Excel, PowerPoint)">MS Office (Word, Excel, PowerPoint)</option>
-                            <option value="Typing (Hindi + English)">Typing (Hindi + English)</option>
-                            <option value="Internet & Email Training">Internet & Email Training</option>
-                            <option value="Tally Prime with GST">Tally Prime with GST</option>
-                            <option value="CCC Course">CCC Course</option>
-                            <option value="DCA Course">DCA Course</option>
-                            <option value="PGDCA Course">PGDCA Course</option>
-                            <option value="Photoshop (Image Editing + Design Basics)">Photoshop (Image Editing + Design Basics)</option>
-                            <option value="Canva Designing Course">Canva Designing Course</option>
-                            <option value="AI Course – How to Use ChatGPT Effectively">AI Course – How to Use ChatGPT Effectively</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="batchTime" class="required">Preferred Batch Time</label>
-                        <select id="batchTime" name="batchTime" required>
-                            <option value="">Select Batch Time</option>
-                            <option value="Morning: 7–8 AM">Morning: 7–8 AM</option>
-                            <option value="Morning: 8–9 AM">Morning: 8–9 AM</option>
-                            <option value="Morning: 9–10 AM">Morning: 9–10 AM</option>
-                            <option value="Morning: 10–11 AM">Morning: 10–11 AM</option>
-                            <option value="Evening: 5–6 PM">Evening: 5–6 PM</option>
-                            <option value="Evening: 6–7 PM">Evening: 6–7 PM</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Payment Section -->
-            <div class="form-section payment-section">
-                <div class="section-title"><i class="fas fa-money-bill-wave"></i> Registration Fee - ₹99</div>
-                
-                <div class="form-group">
-                    <label class="required">Select Payment Method</label>
-                    
-                    <div class="payment-option" id="upiOption">
-                        <div class="payment-icon">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <div class="payment-info">
-                            <div class="payment-name">UPI Payment</div>
-                            <div class="payment-desc">Google Pay, PhonePe, Paytm, BHIM UPI</div>
-                        </div>
-                    </div>
-                    
-                    <div class="payment-option" id="cashOption">
-                        <div class="payment-icon">
-                            <i class="fas fa-money-bill-wave"></i>
-                        </div>
-                        <div class="payment-info">
-                            <div class="payment-name">Cash at Institute</div>
-                            <div class="payment-desc">Visit institute to pay registration fee</div>
-                        </div>
-                    </div>
-                    
-                    <div class="upi-id" id="upiIdDisplay">
-                        UPI ID: 8349902843@ybl
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="transactionId">Transaction ID (If paid online)</label>
-                    <input type="text" id="transactionId" name="transactionId" placeholder="Enter UPI transaction ID">
-                </div>
-            </div>
-
-            <!-- Documents Section -->
-            <div class="form-section">
-                <div class="section-title"><i class="fas fa-file-alt"></i> Required Documents</div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="photo">Passport Size Photo</label>
-                        <input type="file" id="photo" name="photo" class="file-upload" accept="image/*" required>
-                        <div class="photo-requirements">Recommended: Passport size photo (2x2 inches), Max 500KB</div>
-                        <div class="file-preview" id="photoPreview"></div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="aadharCard">Aadhar Card</label>
-                        <input type="file" id="aadharCard" name="aadharCard" class="file-upload" accept="image/*,.pdf" required>
-                        <div class="file-preview" id="aadharPreview"></div>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="marksheet">Marksheet (Last Passing Year) - Optional</label>
-                        <input type="file" id="marksheet" name="marksheet" class="file-upload" accept="image/*,.pdf">
-                        <div class="file-preview" id="marksheetPreview"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-note">
-                Guru Ke Saath Gyan, Safalta Ki Pehchan - Your Journey to Success Starts Here!
-            </div>
-
-            <div class="spinner" id="loadingSpinner"></div>
-            <button type="submit" class="submit-btn" id="submitBtn">
-                <i class="fas fa-paper-plane"></i> Submit Admission Form
-            </button>
-        </div>
-
-        <!-- Success Message -->
-        <div class="success-message hindi-text" id="successMessage">
-            <div class="success-icon">✓</div>
-            <h2>Form Submitted Successfully!</h2>
-            <p>धन्यवाद! आपका फॉर्म सफलतापूर्वक जमा हो गया है।</p>
-            
-            <div class="student-id" id="studentIdDisplay">
-                Your Student ID: Loading...
-            </div>
-
-            <div class="student-info">
-                <h3 style="text-align: center; color: var(--primary-blue); margin-bottom: 15px;">Student Information</h3>
-                <div class="info-row">
-                    <div class="info-label">Full Name:</div>
-                    <div class="info-value" id="successFullName">-</div>
-                </div>
-                <div class="info-row">
-                    <div class="info-label">Course:</div>
-                    <div class="info-value" id="successCourse">-</div>
-                </div>
-                <div class="info-row">
-                    <div class="info-label">Batch Time:</div>
-                    <div class="info-value" id="successBatchTime">-</div>
-                </div>
-                <div class="info-row">
-                    <div class="info-label">Mobile:</div>
-                    <div class="info-value" id="successMobile">-</div>
-                </div>
-                <div class="info-row">
-                    <div class="info-label">Submission Date:</div>
-                    <div class="info-value" id="submissionDate">Loading...</div>
-                </div>
-            </div>
-
-            <div class="next-steps">
-                <h3><i class="fas fa-list-check"></i> आगे की प्रक्रिया</h3>
-                <ul>
-                    <li>₹99 रजिस्ट्रेशन फीस जमा करें (UPI या इंस्टीट्यूट में)</li>
-                    <li>हमारी टीम 24 घंटे के भीतर आपसे संपर्क करेगी</li>
-                    <li>कृपया अपने मूल दस्तावेज लेकर इंस्टीट्यूट आएं</li>
-                    <li>फीस जमा करने और एडमिशन पूरा करने की प्रक्रिया</li>
-                    <li>बैच शुरू होने की तिथि की पुष्टि</li>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home"><span class="english">Home</span><span class="hindi" style="display: none;">होम</span></a></li>
+                    <li><a href="#about"><span class="english">About Us</span><span class="hindi" style="display: none;">हमारे बारे में</span></a></li>
+                    <li><a href="#courses"><span class="english">Courses</span><span class="hindi" style="display: none;">कोर्सेज</span></a></li>
+                    <li><a href="#team"><span class="english">Our Team</span><span class="hindi" style="display: none;">हमारी टीम</span></a></li>
+                    <li><a href="#gallery"><span class="english">Gallery</span><span class="hindi" style="display: none;">गैलरी</span></a></li>
+                    <li><a href="#testimonials"><span class="english">Reviews</span><span class="hindi" style="display: none;">समीक्षाएँ</span></a></li>
+                    <li><a href="#contact"><span class="english">Contact</span><span class="hindi" style="display: none;">संपर्क करें</span></a></li>
                 </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" id="home" aria-label="Hero Section">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Guru Computer Education Institute</h1>
+                <div class="tagline" role="heading" aria-level="2">
+                    <span class="english">"Knowledge with Guru, Identity of Success"</span>
+                    <span class="hindi" style="display: none;">"गुरु के साथ ज्ञान, सफलता की पहचान"</span>
+                </div>
+                <p class="english">Since 2015 - Trusted Computer Education Institute in Bilha, Bilaspur</p>
+                <p class="hindi" style="display: none;">2015 से - बिल्हा, बिलासपुर में विश्वसनीय कंप्यूटर शिक्षा संस्थान</p>
+                
+                <div class="experience-badge">
+                    <i class="fas fa-medal" aria-hidden="true"></i>
+                    <span class="english">Trusted Computer Training Centre Since 2015</span>
+                    <span class="hindi" style="display: none;">2015 से विश्वसनीय कंप्यूटर प्रशिक्षण केंद्र</span>
+                </div>
+                
+                <div class="hero-buttons">
+                    <a href="#courses" class="btn btn-primary">
+                        <span class="english">View All Courses</span>
+                        <span class="hindi" style="display: none;">सभी कोर्स देखें</span>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <span class="english">Admission Form</span>
+                        <span class="hindi" style="display: none;">प्रवेश फॉर्म</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <section class="about" id="about" aria-label="About Our Institute">
+        <div class="container">
+            <div class="section-title">
+                <h2>
+                    <span class="english">About Our Institute</span>
+                    <span class="hindi" style="display: none;">हमारे संस्थान के बारे में</span>
+                </h2>
+                <p class="english">Providing quality computer education with experienced faculty and modern facilities</p>
+                <p class="hindi" style="display: none;">अनुभवी संकाय और आधुनिक सुविधाओं के साथ गुणवत्तापूर्ण कंप्यूटर शिक्षा प्रदान करना</p>
             </div>
             
-            <div class="action-buttons">
-                <button class="action-btn download-btn" id="downloadPdfBtn">
-                    <i class="fas fa-file-pdf"></i> Download PDF
-                </button>
-                <button class="action-btn whatsapp-btn" id="whatsappBtn">
-                    <i class="fab fa-whatsapp"></i> Share via WhatsApp
-                </button>
-                <button class="action-btn new-form-btn" id="newFormBtn">
-                    <i class="fas fa-plus"></i> New Admission Form
-                </button>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Students learning at Guru Computer Institute lab" loading="lazy">
+                </div>
+                <div class="about-text">
+                    <h3 class="english">Welcome to Guru Computer Education Institute</h3>
+                    <h3 class="hindi" style="display: none;">गुरु कंप्यूटर एजुकेशन इंस्टीट्यूट में आपका स्वागत है</h3>
+                    
+                    <p class="english">Established in 2015, Guru Computer Education Institute has been a pioneer in providing quality computer education in Bilha, Bilaspur. Our mission is to empower students with practical computer skills that are essential in today's digital world.</p>
+                    <p class="hindi" style="display: none;">2015 में स्थापित, गुरु कंप्यूटर एजुकेशन इंस्टीट्यूट बिल्हा, बिलासपर में गुणवत्तापूर्ण कंप्यूटर शिक्षा प्रदान करने में अग्रणी रहा है। हमारा मिशन छात्रों को व्यावहारिक कंप्यूटर कौशल से सशक्त बनाना है जो आज की डिजिटल दुनिया में आवश्यक हैं।</p>
+                    
+                    <p class="english">We offer a wide range of courses from basic computer literacy to advanced professional courses like Tally, DCA, PGDCA, and AI tools including ChatGPT.</p>
+                    <p class="hindi" style="display: none;">हम बुनियादी कंप्यूटर साक्षरता से लेकर टैली, डीसीए, पीजीडीसीए और चैटजीपीटी सहित एआई टूल जैसे उन्नत पेशेवर पाठ्यक्रमों की एक विस्तृत श्रृंखला प्रदान करते हैं।</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-laptop-code" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="english">Modern Lab</h4>
+                            <h4 class="hindi" style="display: none;">आधुनिक लैब</h4>
+                            <p class="english">Fully equipped computer lab with latest software</p>
+                            <p class="hindi" style="display: none;">नवीनतम सॉफ्टवेयर के साथ पूरी तरह सुसज्जित कंप्यूटर लैब</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="english">Expert Faculty</h4>
+                            <h4 class="hindi" style="display: none;">विशेषज्ञ संकाय</h4>
+                            <p class="english">Experienced and certified trainers</p>
+                            <p class="hindi" style="display: none;">अनुभवी और प्रमाणित प्रशिक्षक</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-certificate" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="english">Certification</h4>
+                            <h4 class="hindi" style="display: none;">प्रमाणन</h4>
+                            <p class="english">Government recognized certificates</p>
+                            <p class="hindi" style="display: none;">सरकार द्वारा मान्यता प्राप्त प्रमाणपत्र</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="footer-note">
-                <div class="tagline">Guru Ke Saath Gyan, Safalta Ki Pehchan</div>
-                <strong>Contact: 9244240484 (Vani)</strong><br>
-                <small style="opacity: 0.8; font-weight: normal;">आपकी जानकारी सुरक्षित रूप से हमारे सिस्टम में सेव हो गई है</small>
+    <!-- ===== COURSES SECTION ===== -->
+    <section id="courses" aria-label="Our Courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>
+                    <span class="english">Our Courses</span>
+                    <span class="hindi" style="display: none;">हमारे कोर्स</span>
+                </h2>
+                <p class="english">Comprehensive computer courses designed for career success</p>
+                <p class="hindi" style="display: none;">करियर सफलता के लिए डिज़ाइन किए गए व्यापक कंप्यूटर कोर्स</p>
             </div>
+            
+            <div class="courses-grid">
+                <!-- Course 1: Basic Computer -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>
+                            <span class="english">Basic Computer</span>
+                            <span class="hindi" style="display: none;">बेसिक कंप्यूटर</span>
+                        </h3>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-duration">
+                            <i class="far fa-clock" aria-hidden="true"></i> 
+                            <span class="english">Duration: 45 Days</span>
+                            <span class="hindi" style="display: none;">अवधि: 45 दिन</span>
+                        </div>
+                        <div class="course-fee">
+                            <i class="fas fa-rupee-sign" aria-hidden="true"></i> 
+                            <span class="english">Fee: ₹599</span>
+                            <span class="hindi" style="display: none;">फीस: ₹599</span>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Computer Basic Knowledge</span>
+                                <span class="hindi" style="display: none;">कंप्यूटर की बुनियादी जानकारी</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Windows OS Usage</span>
+                                <span class="hindi" style="display: none;">Windows ऑपरेटिंग सिस्टम का उपयोग</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Notepad, Wordpad, Paint</span>
+                                <span class="hindi" style="display: none;">नोटपैड, वर्डपैड, पेंट</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">File & Folder Management</span>
+                                <span class="hindi" style="display: none;">फाइल व फोल्डर प्रबंधन</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary">
+                            <span class="english">Enroll Now</span>
+                            <span class="hindi" style="display: none;">अभी नामांकन करें</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Course 2: MS Office -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>
+                            <span class="english">MS Office (Word, Excel, PowerPoint)</span>
+                            <span class="hindi" style="display: none;">एमएस ऑफिस (वर्ड, एक्सेल, पावरपॉइंट)</span>
+                        </h3>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-duration">
+                            <i class="far fa-clock" aria-hidden="true"></i> 
+                            <span class="english">Duration: 1.5-2 Months</span>
+                            <span class="hindi" style="display: none;">अवधि: 1.5-2 महीने</span>
+                        </div>
+                        <div class="course-fee">
+                            <i class="fas fa-rupee-sign" aria-hidden="true"></i> 
+                            <span class="english">Fee: ₹1,499</span>
+                            <span class="hindi" style="display: none;">फीस: ₹1,499</span>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">MS Word: Documents, Formatting, Mail Merge</span>
+                                <span class="hindi" style="display: none;">एमएस वर्ड: डॉक्यूमेंट, फॉर्मेटिंग, मेल मर्ज</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">MS Excel: Formulas, Charts, Pivot Tables</span>
+                                <span class="hindi" style="display: none;">एमएस एक्सेल: फॉर्मूला, चार्ट, पिवट टेबल</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">MS PowerPoint: Presentations, Animations</span>
+                                <span class="hindi" style="display: none;">एमएस पावरपॉइंट: प्रेजेंटेशन, एनिमेशन</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Practical Projects & Assignments</span>
+                                <span class="hindi" style="display: none;">व्यावहारिक प्रोजेक्ट और असाइनमेंट</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary">
+                            <span class="english">Enroll Now</span>
+                            <span class="hindi" style="display: none;">अभी नामांकन करें</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Course 3: Typing -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>
+                            <span class="english">Typing (Hindi + English)</span>
+                            <span class="hindi" style="display: none;">टाइपिंग (हिंदी + अंग्रेजी)</span>
+                        </h3>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-duration">
+                            <i class="far fa-clock" aria-hidden="true"></i> 
+                            <span class="english">Duration: 1 Month</span>
+                            <span class="hindi" style="display: none;">अवधि: 1 महीना</span>
+                        </div>
+                        <div class="course-fee">
+                            <i class="fas fa-rupee-sign" aria-hidden="true"></i> 
+                            <span class="english">Fee: ₹499</span>
+                            <span class="hindi" style="display: none;">फीस: ₹499</span>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Learn Touch Typing</span>
+                                <span class="hindi" style="display: none;">टच टाइपिंग सीखना</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">English & Hindi Typing (Computer, Mobile)</span>
+                                <span class="hindi" style="display: none;">अंग्रेजी और हिंदी टाइपिंग (कंप्यूटर, मोबाइल)</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Increase Speed & Accuracy</span>
+                                <span class="hindi" style="display: none;">स्पीड और शुद्धता बढ़ाना</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Certificate after Course Completion</span>
+                                <span class="hindi" style="display: none;">कोर्स पूरा होने पर प्रमाणपत्र</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary">
+                            <span class="english">Enroll Now</span>
+                            <span class="hindi" style="display: none;">अभी नामांकन करें</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Course 4: Internet & Email -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>
+                            <span class="english">Internet & Email Training</span>
+                            <span class="hindi" style="display: none;">इंटरनेट और ईमेल ट्रेनिंग</span>
+                        </h3>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-duration">
+                            <i class="far fa-clock" aria-hidden="true"></i> 
+                            <span class="english">Duration: 15 Days</span>
+                            <span class="hindi" style="display: none;">अवधि: 15 दिन</span>
+                        </div>
+                        <div class="course-fee">
+                            <i class="fas fa-rupee-sign" aria-hidden="true"></i> 
+                            <span class="english">Fee: ₹399</span>
+                            <span class="hindi" style="display: none;">फीस: ₹399</span>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Internet Surfing, Search Engine Usage</span>
+                                <span class="hindi" style="display: none;">इंटरनेट सर्फिंग, सर्च इंजन का उपयोग</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Create, Send Emails with Attachments</span>
+                                <span class="hindi" style="display: none;">ईमेल बनाना, भेजना, अटैचमेंट</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Social Media & Online Safety</span>
+                                <span class="hindi" style="display: none;">सोशल मीडिया और ऑनलाइन सुरक्षा</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Online Banking & Shopping Basics</span>
+                                <span class="hindi" style="display: none;">ऑनलाइन बैंकिंग और शॉपिंग की मूल बातें</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary">
+                            <span class="english">Enroll Now</span>
+                            <span class="hindi" style="display: none;">अभी नामांकन करें</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Course 5: Tally Prime -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>
+                            <span class="english">Tally Prime with GST</span>
+                            <span class="hindi" style="display: none;">टैली प्राइम with GST</span>
+                        </h3>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-duration">
+                            <i class="far fa-clock" aria-hidden="true"></i> 
+                            <span class="english">Duration: 3 Months</span>
+                            <span class="hindi" style="display: none;">अवधि: 3 महीने</span>
+                        </div>
+                        <div class="course-fee">
+                            <i class="fas fa-rupee-sign" aria-hidden="true"></i> 
+                            <span class="english">Fee: ₹2,999</span>
+                            <span class="hindi" style="display: none;">फीस: ₹2,999</span>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Complete Accounting in Tally Prime</span>
+                                <span class="hindi" style="display: none;">टैली प्राइम में पूर्ण लेखांकन</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">GST Returns, Invoice Creation</span>
+                                <span class="hindi" style="display: none;">GST रिटर्न, इनवॉइस बनाना</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Inventory Management</span>
+                                <span class="hindi" style="display: none;">इन्वेंटरी प्रबंधन</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Payroll & Banking</span>
+                                <span class="hindi" style="display: none;">पेरोल और बैंकिंग</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary">
+                            <span class="english">Enroll Now</span>
+                            <span class="hindi" style="display: none;">अभी नामांकन करें</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Course 6: CCC -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>
+                            <span class="english">CCC (Course on Computer Concepts)</span>
+                            <span class="hindi" style="display: none;">CCC (कंप्यूटर अवधारणाओं पर पाठ्यक्रम)</span>
+                        </h3>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-duration">
+                            <i class="far fa-clock" aria-hidden="true"></i> 
+                            <span class="english">Duration: 3 Months</span>
+                            <span class="hindi" style="display: none;">अवधि: 3 महीने</span>
+                        </div>
+                        <div class="course-fee">
+                            <i class="fas fa-rupee-sign" aria-hidden="true"></i> 
+                            <span class="english">Fee: ₹2,999</span>
+                            <span class="hindi" style="display: none;">फीस: ₹2,999</span>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Basic Computer Concepts</span>
+                                <span class="hindi" style="display: none;">कंप्यूटर की मूलभूत अवधारणाएँ</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">According to NIELIT CCC Syllabus</span>
+                                <span class="hindi" style="display: none;">NIELIT CCC सिलेबस के अनुसार</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Preparation for Certification</span>
+                                <span class="hindi" style="display: none;">सर्टिफिकेशन के लिए तैयारी</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Government Recognized Certificate</span>
+                                <span class="hindi" style="display: none;">सरकार द्वारा मान्यता प्राप्त प्रमाणपत्र</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary">
+                            <span class="english">Enroll Now</span>
+                            <span class="hindi" style="display: none;">अभी नामांकन करें</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Course 7: DCA -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>
+                            <span class="english">DCA (Diploma in Computer Applications)</span>
+                            <span class="hindi" style="display: none;">डीसीए (कंप्यूटर एप्लीकेशन में डिप्लोमा)</span>
+                        </h3>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-duration">
+                            <i class="far fa-clock" aria-hidden="true"></i> 
+                            <span class="english">Duration: 1 Year</span>
+                            <span class="hindi" style="display: none;">अवधि: 1 साल</span>
+                        </div>
+                        <div class="course-fee">
+                            <i class="fas fa-rupee-sign" aria-hidden="true"></i> 
+                            <span class="english">Contact for Fee Details</span>
+                            <span class="hindi" style="display: none;">फीस विवरण के लिए संपर्क करें</span>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Diploma in Computer Applications</span>
+                                <span class="hindi" style="display: none;">कंप्यूटर एप्लीकेशन में डिप्लोमा</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">All Basic & Advanced Software</span>
+                                <span class="hindi" style="display: none;">सभी बेसिक और एडवांस सॉफ्टवेयर</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Practical Knowledge & Projects</span>
+                                <span class="hindi" style="display: none;">प्रैक्टिकल नॉलेज और प्रोजेक्ट</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Career Guidance & Placement Assistance</span>
+                                <span class="hindi" style="display: none;">करियर मार्गदर्शन और प्लेसमेंट सहायता</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary">
+                            <span class="english">Enroll Now</span>
+                            <span class="hindi" style="display: none;">अभी नामांकन करें</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Course 8: PGDCA -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>
+                            <span class="english">PGDCA (Post Graduate Diploma)</span>
+                            <span class="hindi" style="display: none;">पीजीडीसीए (पोस्ट ग्रेजुएट डिप्लोमा)</span>
+                        </h3>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-duration">
+                            <i class="far fa-clock" aria-hidden="true"></i> 
+                            <span class="english">Duration: 1 Year</span>
+                            <span class="hindi" style="display: none;">अवधि: 1 साल</span>
+                        </div>
+                        <div class="course-fee">
+                            <i class="fas fa-rupee-sign" aria-hidden="true"></i> 
+                            <span class="english">Contact for Fee Details</span>
+                            <span class="hindi" style="display: none;">फीस विवरण के लिए संपर्क करें</span>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Advanced Course for Graduates</span>
+                                <span class="hindi" style="display: none;">ग्रेजुएट्स के लिए एडवांस कोर्स</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Programming, Database, Web Design</span>
+                                <span class="hindi" style="display: none;">प्रोग्रामिंग, डेटाबेस, वेब डिज़ाइन</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Software Development & Management</span>
+                                <span class="hindi" style="display: none;">सॉफ्टवेयर डेवलपमेंट और मैनेजमेंट</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Industry-Relevant Skills</span>
+                                <span class="hindi" style="display: none;">उद्योग-संबंधी कौशल</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary">
+                            <span class="english">Enroll Now</span>
+                            <span class="hindi" style="display: none;">अभी नामांकन करें</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Course 9: Photoshop -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>
+                            <span class="english">Photoshop</span>
+                            <span class="hindi" style="display: none;">फोटोशॉप</span>
+                        </h3>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-duration">
+                            <i class="far fa-clock" aria-hidden="true"></i> 
+                            <span class="english">Duration: 45 Days</span>
+                            <span class="hindi" style="display: none;">अवधि: 45 दिन</span>
+                        </div>
+                        <div class="course-fee">
+                            <i class="fas fa-rupee-sign" aria-hidden="true"></i> 
+                            <span class="english">Fee: ₹2,499</span>
+                            <span class="hindi" style="display: none;">फीस: ₹2,499</span>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Photo Editing, Retouching</span>
+                                <span class="hindi" style="display: none;">फोटो एडिटिंग, रिटचिंग</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Graphic Design Basics</span>
+                                <span class="hindi" style="display: none;">ग्राफिक डिज़ाइन बेसिक्स</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Logo, Banner, Social Media Post Design</span>
+                                <span class="hindi" style="display: none;">लोगो, बैनर, सोशल मीडिया पोस्ट डिज़ाइन</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Professional Portfolio Creation</span>
+                                <span class="hindi" style="display: none;">पेशेवर पोर्टफोलियो निर्माण</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary">
+                            <span class="english">Enroll Now</span>
+                            <span class="hindi" style="display: none;">अभी नामांकन करें</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Course 10: Canva -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>
+                            <span class="english">Canva</span>
+                            <span class="hindi" style="display: none;">कैनवा</span>
+                        </h3>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-duration">
+                            <i class="far fa-clock" aria-hidden="true"></i> 
+                            <span class="english">Duration: 1 Month</span>
+                            <span class="hindi" style="display: none;">अवधि: 1 महीना</span>
+                        </div>
+                        <div class="course-fee">
+                            <i class="fas fa-rupee-sign" aria-hidden="true"></i> 
+                            <span class="english">Fee: ₹999</span>
+                            <span class="hindi" style="display: none;">फीस: ₹999</span>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Design Creation on Canva</span>
+                                <span class="hindi" style="display: none;">कैनवा पर डिज़ाइन बनाना</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Professional Presentations, Posters, Logos</span>
+                                <span class="hindi" style="display: none;">प्रोफेशनल प्रेजेंटेशन, पोस्टर, लोगो</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Social Media & Marketing Design</span>
+                                <span class="hindi" style="display: none;">सोशल मीडिया और मार्केटिंग डिज़ाइन</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Templates & Brand Kit Creation</span>
+                                <span class="hindi" style="display: none;">टेम्प्लेट और ब्रांड किट निर्माण</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary">
+                            <span class="english">Enroll Now</span>
+                            <span class="hindi" style="display: none;">अभी नामांकन करें</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Course 11: AI ChatGPT -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>
+                            <span class="english">AI Course – ChatGPT Training</span>
+                            <span class="hindi" style="display: none;">एआई कोर्स – चैटजीपीटी प्रशिक्षण</span>
+                        </h3>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-duration">
+                            <i class="far fa-clock" aria-hidden="true"></i> 
+                            <span class="english">Duration: 20-30 Days</span>
+                            <span class="hindi" style="display: none;">अवधि: 20-30 दिन</span>
+                        </div>
+                        <div class="course-fee">
+                            <i class="fas fa-rupee-sign" aria-hidden="true"></i> 
+                            <span class="english">Fee: ₹1,499</span>
+                            <span class="hindi" style="display: none;">फीस: ₹1,499</span>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Introduction to AI & ChatGPT</span>
+                                <span class="hindi" style="display: none;">AI और ChatGPT का परिचय</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Prompt Engineering</span>
+                                <span class="hindi" style="display: none;">प्रॉम्प्ट इंजीनियरिंग</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">Content Writing, Idea Generation, Problem Solving</span>
+                                <span class="hindi" style="display: none;">कॉन्टेंट राइटिंग, आइडिया जनरेशन, प्रॉब्लम सॉल्विंग</span>
+                            </li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 
+                                <span class="english">AI Use in Employment & Business</span>
+                                <span class="hindi" style="display: none;">रोज़गार और व्यवसाय में AI के उपयोग</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary">
+                            <span class="english">Enroll Now</span>
+                            <span class="hindi" style="display: none;">अभी नामांकन करें</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TEAM SECTION ===== -->
+    <section class="team" id="team" aria-label="Our Team">
+        <div class="container">
+            <div class="section-title">
+                <h2>
+                    <span class="english">Our Management Team</span>
+                    <span class="hindi" style="display: none;">हमारी प्रबंधन टीम</span>
+                </h2>
+                <p class="english">Meet our dedicated team of professionals</p>
+                <p class="hindi" style="display: none;">हमारे समर्पित पेशेवरों की टीम से मिलें</p>
+            </div>
+            
+            <div class="team-grid">
+                <!-- Founder -->
+                <div class="team-card">
+                    <div class="team-avatar">NJ</div>
+                    <div class="team-info">
+                        <h3>Nisha Jangde</h3>
+                        <p>
+                            <span class="english">Founder & Director</span>
+                            <span class="hindi" style="display: none;">संस्थापक और निदेशक</span>
+                        </p>
+                        <p class="english">With 9+ years of experience in computer education, leading the institute with dedication.</p>
+                        <p class="hindi" style="display: none;">कंप्यूटर शिक्षा में 9+ वर्षों के अनुभव के साथ, समर्पण के साथ संस्थान का नेतृत्व कर रही हैं।</p>
+                        <div class="team-contact">
+                            <a href="tel:9244240484">
+                                <i class="fas fa-phone" aria-hidden="true"></i> 
+                                <span class="english">Call: 92442 40484</span>
+                                <span class="hindi" style="display: none;">कॉल: 92442 40484</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Centre Head -->
+                <div class="team-card">
+                    <div class="team-avatar">SJ</div>
+                    <div class="team-info">
+                        <h3>Sandeep Jangde</h3>
+                        <p>
+                            <span class="english">Centre Head</span>
+                            <span class="hindi" style="display: none;">केंद्र प्रमुख</span>
+                        </p>
+                        <p class="english">Managing institute operations and ensuring quality education delivery.</p>
+                        <p class="hindi" style="display: none;">संस्थान संचालन का प्रबंधन और गुणवत्तापूर्ण शिक्षा वितरण सुनिश्चित करना।</p>
+                        <div class="team-contact">
+                            <a href="tel:8349902843">
+                                <i class="fas fa-phone" aria-hidden="true"></i> 
+                                <span class="english">Call: 83499 02843</span>
+                                <span class="hindi" style="display: none;">कॉल: 83499 02843</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Operations Manager -->
+                <div class="team-card">
+                    <div class="team-avatar">DJ</div>
+                    <div class="team-info">
+                        <h3>Dheeraj Jangde</h3>
+                        <p>
+                            <span class="english">Operations Manager & Counselor</span>
+                            <span class="hindi" style="display: none;">संचालन प्रबंधक और सलाहकार</span>
+                        </p>
+                        <p class="english">Helping students choose the right courses and managing daily operations.</p>
+                        <p class="hindi" style="display: none;">छात्रों को सही पाठ्यक्रम चुनने में मदद करना और दैनिक संचालन का प्रबंधन करना।</p>
+                        <div class="team-contact">
+                            <a href="tel:9343225522">
+                                <i class="fas fa-phone" aria-hidden="true"></i> 
+                                <span class="english">Call: 93432 25522</span>
+                                <span class="hindi" style="display: none;">कॉल: 93432 25522</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="testimonials" id="testimonials" aria-label="Student Testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>
+                    <span class="english">Student Reviews</span>
+                    <span class="hindi" style="display: none;">छात्र समीक्षाएँ</span>
+                </h2>
+                <p class="english">What our students say about us</p>
+                <p class="hindi" style="display: none;">हमारे छात्र हमारे बारे में क्या कहते हैं</p>
+            </div>
+            
+            <div class="testimonials-slider">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card active">
+                    <div class="testimonial-text">
+                        <span class="english">I completed Tally course from Guru Computer Institute. The faculty is very supportive and the practical training helped me get a job in a CA firm. Highly recommended!</span>
+                        <span class="hindi" style="display: none;">मैंने गुरु कंप्यूटर इंस्टीट्यूट से टैली कोर्स पूरा किया। संकाय बहुत सहायक है और व्यावहारिक प्रशिक्षण ने मुझे एक सीए फर्म में नौकरी पाने में मदद की। अत्यधिक अनुशंसित!</span>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RP</div>
+                        <div class="author-info">
+                            <h4>Rahul Patel</h4>
+                            <p>
+                                <span class="english">Tally Student, 2023</span>
+                                <span class="hindi" style="display: none;">टैली छात्र, 2023</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <span class="english">The DCA course curriculum is comprehensive and up-to-date. I learned practical skills that are actually useful in real jobs. Thank you Guru Computer Institute!</span>
+                        <span class="hindi" style="display: none;">डीसीए कोर्स का पाठ्यक्रम व्यापक और अद्यतन है। मैंने व्यावहारिक कौशल सीखे जो वास्तविक नौकरियों में उपयोगी हैं। धन्यवाद गुरु कंप्यूटर इंस्टीट्यूट!</span>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">PS</div>
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <p>
+                                <span class="english">DCA Student, 2024</span>
+                                <span class="hindi" style="display: none;">डीसीए छात्र, 2024</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <span class="english">Excellent teaching methodology. The Basic Computer course helped my mother start her own small business. Very affordable fees and quality education.</span>
+                        <span class="hindi" style="display: none;">उत्कृष्ट शिक्षण पद्धति। बेसिक कंप्यूटर कोर्स ने मेरी माँ को अपना छोटा व्यवसाय शुरू करने में मदद की। बहुत सस्ती फीस और गुणवत्तापूर्ण शिक्षा।</span>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AS</div>
+                        <div class="author-info">
+                            <h4>Anil Singh</h4>
+                            <p>
+                                <span class="english">Basic Computer Student, 2024</span>
+                                <span class="hindi" style="display: none;">बेसिक कंप्यूटर छात्र, 2024</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-nav">
+                <div class="testimonial-dot active" data-slide="0" aria-label="Go to testimonial 1"></div>
+                <div class="testimonial-dot" data-slide="1" aria-label="Go to testimonial 2"></div>
+                <div class="testimonial-dot" data-slide="2" aria-label="Go to testimonial 3"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GALLERY ===== -->
+    <section class="gallery" id="gallery" aria-label="Photo Gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>
+                    <span class="english">Our Gallery</span>
+                    <span class="hindi" style="display: none;">हमारी गैलरी</span>
+                </h2>
+                <p class="english">Glimpse of our institute and activities</p>
+                <p class="hindi" style="display: none;">हमारे संस्थान और गतिविधियों की झलक</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Modern computer lab at Guru Computer Institute" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1524178234883-043d5c3f3cf4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Students attending computer class" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Teacher providing one-on-one training" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab590?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Certificate distribution ceremony" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT SECTION ===== -->
+    <section class="contact" id="contact" aria-label="Contact Us">
+        <div class="container">
+            <div class="section-title">
+                <h2>
+                    <span class="english">Contact Us</span>
+                    <span class="hindi" style="display: none;">संपर्क करें</span>
+                </h2>
+                <p class="english">Get in touch for admissions and inquiries</p>
+                <p class="hindi" style="display: none;">प्रवेश और पूछताछ के लिए संपर्क करें</p>
+            </div>
+            
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>
+                                <span class="english">Institute Address</span>
+                                <span class="hindi" style="display: none;">संस्थान का पता</span>
+                            </h3>
+                            <p>Near Police Station, Dagori Road<br>
+                            Bilha, Bilaspur (Chhattisgarh)<br>
+                            PIN Code: 495224</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone" aria-hidden="true"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>
+                                <span class="english">Contact Numbers</span>
+                                <span class="hindi" style="display: none;">संपर्क नंबर</span>
+                            </h3>
+                            <p>Nisha Jangde (Founder): 92442 40484<br>
+                            Sandeep Jangde (Centre Head): 83499 02843<br>
+                            Dheeraj Jangde (Manager): 93432 25522</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>
+                                <span class="english">Email Address</span>
+                                <span class="hindi" style="display: none;">ईमेल पता</span>
+                            </h3>
+                            <p>info.gceiofficial@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="far fa-clock" aria-hidden="true"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>
+                                <span class="english">Working Hours</span>
+                                <span class="hindi" style="display: none;">कार्य घंटे</span>
+                            </h3>
+                            <p>
+                                <span class="english">Monday - Saturday: 9:00 AM - 7:00 PM<br>
+                                Sunday: 10:00 AM - 2:00 PM</span>
+                                <span class="hindi" style="display: none;">सोमवार - शनिवार: सुबह 9:00 - शाम 7:00<br>
+                                रविवार: सुबह 10:00 - दोपहर 2:00</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>
+                        <span class="english">Admission Inquiry Form</span>
+                        <span class="hindi" style="display: none;">प्रवेश पूछताछ फॉर्म</span>
+                    </h3>
+                    <form id="inquiryForm" aria-label="Admission inquiry form">
+                        <div class="form-group">
+                            <label for="name">
+                                <span class="english">Full Name *</span>
+                                <span class="hindi" style="display: none;">पूरा नाम *</span>
+                            </label>
+                            <input type="text" id="name" class="form-control" required aria-required="true">
+                            <div class="error-message" id="nameError">
+                                <span class="english">Please enter your full name</span>
+                                <span class="hindi" style="display: none;">कृपया अपना पूरा नाम दर्ज करें</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">
+                                <span class="english">Phone Number *</span>
+                                <span class="hindi" style="display: none;">फोन नंबर *</span>
+                            </label>
+                            <input type="tel" id="phone" class="form-control" required aria-required="true" pattern="[0-9]{10}" maxlength="10">
+                            <div class="error-message" id="phoneError">
+                                <span class="english">Please enter a valid 10-digit phone number</span>
+                                <span class="hindi" style="display: none;">कृपया एक मान्य 10-अंकीय फोन नंबर दर्ज करें</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">
+                                <span class="english">Email Address</span>
+                                <span class="hindi" style="display: none;">ईमेल पता</span>
+                            </label>
+                            <input type="email" id="email" class="form-control" aria-describedby="emailHelp">
+                            <div class="error-message" id="emailError">
+                                <span class="english">Please enter a valid email address</span>
+                                <span class="hindi" style="display: none;">कृपया एक मान्य ईमेल पता दर्ज करें</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="course">
+                                <span class="english">Course Interested In *</span>
+                                <span class="hindi" style="display: none;">रुचि वाला कोर्स *</span>
+                            </label>
+                            <select id="course" class="form-control" required aria-required="true">
+                                <option value="">
+                                    <span class="english">Select a course</span>
+                                    <span class="hindi" style="display: none;">एक कोर्स चुनें</span>
+                                </option>
+                                <option value="Basic Computer">
+                                    <span class="english">Basic Computer</span>
+                                    <span class="hindi" style="display: none;">बेसिक कंप्यूटर</span>
+                                </option>
+                                <option value="MS Office">
+                                    <span class="english">MS Office</span>
+                                    <span class="hindi" style="display: none;">एमएस ऑफिस</span>
+                                </option>
+                                <option value="Tally Prime">
+                                    <span class="english">Tally Prime GST</span>
+                                    <span class="hindi" style="display: none;">टैली प्राइम जीएसटी</span>
+                                </option>
+                                <option value="Typing">
+                                    <span class="english">Typing (Hindi+English)</span>
+                                    <span class="hindi" style="display: none;">टाइपिंग (हिंदी+अंग्रेजी)</span>
+                                </option>
+                                <option value="Internet">
+                                    <span class="english">Internet & Email</span>
+                                    <span class="hindi" style="display: none;">इंटरनेट और ईमेल</span>
+                                </option>
+                                <option value="CCC">
+                                    <span class="english">CCC</span>
+                                    <span class="hindi" style="display: none;">सीसीसी</span>
+                                </option>
+                                <option value="DCA">
+                                    <span class="english">DCA</span>
+                                    <span class="hindi" style="display: none;">डीसीए</span>
+                                </option>
+                                <option value="PGDCA">
+                                    <span class="english">PGDCA</span>
+                                    <span class="hindi" style="display: none;">पीजीडीसीए</span>
+                                </option>
+                                <option value="Photoshop">
+                                    <span class="english">Photoshop</span>
+                                    <span class="hindi" style="display: none;">फोटोशॉप</span>
+                                </option>
+                                <option value="Canva">
+                                    <span class="english">Canva Design</span>
+                                    <span class="hindi" style="display: none;">कैनवा डिज़ाइन</span>
+                                </option>
+                                <option value="AI ChatGPT">
+                                    <span class="english">AI ChatGPT</span>
+                                    <span class="hindi" style="display: none;">एआई चैटजीपीटी</span>
+                                </option>
+                                <option value="Other">
+                                    <span class="english">Other</span>
+                                    <span class="hindi" style="display: none;">अन्य</span>
+                                </option>
+                            </select>
+                            <div class="error-message" id="courseError">
+                                <span class="english">Please select a course</span>
+                                <span class="hindi" style="display: none;">कृपया एक कोर्स चुनें</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">
+                                <span class="english">Message / Query</span>
+                                <span class="hindi" style="display: none;">संदेश / प्रश्न</span>
+                            </label>
+                            <textarea id="message" class="form-control" placeholder="Your message here..." aria-label="Additional message"></textarea>
+                        </div>
+                        
+                        <div class="spinner" id="formSpinner"></div>
+                        
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <span class="english">Submit Inquiry</span>
+                            <span class="hindi" style="display: none;">पूछताछ जमा करें</span>
+                        </button>
+                        <div id="formSuccess" style="display:none; color: green; margin-top: 15px; font-weight: 600;">
+                            <span class="english">Thank you! We will contact you soon.</span>
+                            <span class="hindi" style="display: none;">धन्यवाद! हम जल्द ही आपसे संपर्क करेंगे।</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Google Maps -->
+            <div class="map-container">
+                <iframe 
+                    src="https://maps.google.com/maps?q=Bilha,Bilaspur,Chhattisgarh&z=15&output=embed" 
+                    allowfullscreen 
+                    loading="lazy"
+                    title="Location of Guru Computer Education Institute in Bilha, Bilaspur">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="#home" class="logo">
+                        <div class="logo-icon">G</div>
+                        <div class="logo-text">
+                            <h1>Guru Computer</h1>
+                            <span>Education Institute</span>
+                        </div>
+                    </a>
+                    <p style="margin-top: 15px; color: #b2dfdb;">
+                        <span class="english">Providing quality computer education since 2015 in Bilha, Bilaspur.</span>
+                        <span class="hindi" style="display: none;">2015 से बिल्हा, बिलासपुर में गुणवत्तापूर्ण कंप्यूटर शिक्षा प्रदान कर रहे हैं।</span>
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>
+                        <span class="english">Quick Links</span>
+                        <span class="hindi" style="display: none;">त्वरित लिंक</span>
+                    </h3>
+                    <ul>
+                        <li><a href="#home">
+                            <span class="english">Home</span>
+                            <span class="hindi" style="display: none;">होम</span>
+                        </a></li>
+                        <li><a href="#about">
+                            <span class="english">About Us</span>
+                            <span class="hindi" style="display: none;">हमारे बारे में</span>
+                        </a></li>
+                        <li><a href="#courses">
+                            <span class="english">Courses</span>
+                            <span class="hindi" style="display: none;">कोर्सेज</span>
+                        </a></li>
+                        <li><a href="#team">
+                            <span class="english">Our Team</span>
+                            <span class="hindi" style="display: none;">हमारी टीम</span>
+                        </a></li>
+                        <li><a href="#contact">
+                            <span class="english">Contact</span>
+                            <span class="hindi" style="display: none;">संपर्क</span>
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <h3>
+                        <span class="english">Connect With Us</span>
+                        <span class="hindi" style="display: none;">हमसे जुड़ें</span>
+                    </h3>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/gceiofficial/" class="social-icon" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.instagram.com/gceiofficial/" class="social-icon" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://wa.me/919244240484" class="social-icon" target="_blank" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCebEVcrSsWWxWr2qVGRLk6w" class="social-icon" target="_blank" aria-label="YouTube">
+                            <i class="fab fa-youtube" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://maps.app.goo.gl/sYdLaS4EFBz9a4go6" class="social-icon" target="_blank" aria-label="Google Maps">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://jsdl.in/DT-99QYUEQ2AEE" class="social-icon" target="_blank" aria-label="Reviews">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Guru Computer Education Institute. All Rights Reserved. | 
+                    <span class="english">Designed with</span>
+                    <span class="hindi" style="display: none;">डिज़ाइन किया गया</span>
+                    <i class="fas fa-heart" style="color: #ff6b6b;" aria-hidden="true"></i>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== MODAL FOR IMAGES ===== -->
+    <div class="modal" id="imageModal" role="dialog" aria-modal="true" aria-label="Image preview">
+        <span class="close-modal" id="closeModal" aria-label="Close modal">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
         </div>
     </div>
 
+    <!-- ===== FLOATING BUTTONS ===== -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/919244240484" class="floating-btn whatsapp-btn" target="_blank" aria-label="Contact on WhatsApp">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+        </a>
+        <a href="tel:9244240484" class="floating-btn" aria-label="Call us">
+            <i class="fas fa-phone" aria-hidden="true"></i>
+        </a>
+        <a href="#contact" class="floating-btn" aria-label="Send email">
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+        </a>
+    </div>
+
+    <!-- ===== BACK TO TOP ===== -->
+    <a href="#home" class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
+    </a>
+
     <script>
-        // ✅ Google Script URL - Deploy के बाद यहाँ डालें
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwhtASe0rdOUBzFOEB9Pvz3b8cLNdz_rU-H3rX4ok7tsbqyceyY0Brrs-_OZRcJbjA0Yg/exec';
-
-        // Show status message
-        function showStatus(message, type) {
-            const statusEl = document.getElementById('statusMessage');
-            statusEl.textContent = message;
-            statusEl.className = `status-message status-${type}`;
-            statusEl.style.display = 'block';
-            setTimeout(() => {
-                statusEl.style.display = 'none';
-            }, 5000);
-        }
-
-        // Payment method selection
-        document.getElementById('upiOption').addEventListener('click', function() {
-            selectPaymentMethod('upi');
-        });
-
-        document.getElementById('cashOption').addEventListener('click', function() {
-            selectPaymentMethod('cash');
-        });
-
-        function selectPaymentMethod(method) {
-            // Remove selected class from all options
-            document.getElementById('upiOption').classList.remove('selected');
-            document.getElementById('cashOption').classList.remove('selected');
-            
-            // Add selected class to chosen option
-            document.getElementById(method + 'Option').classList.add('selected');
-            
-            // Show UPI ID if UPI selected
-            if (method === 'upi') {
-                document.getElementById('upiIdDisplay').style.display = 'block';
+        // Language Toggle Functionality
+        const langToggle = document.getElementById('langToggle');
+        const body = document.body;
+        
+        langToggle.addEventListener('click', () => {
+            if (body.classList.contains('english')) {
+                body.classList.remove('english');
+                body.classList.add('hindi');
+                langToggle.querySelector('.english').style.display = 'none';
+                langToggle.querySelector('.hindi').style.display = 'inline';
             } else {
-                document.getElementById('upiIdDisplay').style.display = 'none';
+                body.classList.remove('hindi');
+                body.classList.add('english');
+                langToggle.querySelector('.english').style.display = 'inline';
+                langToggle.querySelector('.hindi').style.display = 'none';
             }
-        }
+            
+            // Update all elements with dual language content
+            document.querySelectorAll('.english, .hindi').forEach(el => {
+                if (el.classList.contains('english') && body.classList.contains('english')) {
+                    el.style.display = 'inline';
+                } else if (el.classList.contains('hindi') && body.classList.contains('hindi')) {
+                    el.style.display = 'inline';
+                } else {
+                    el.style.display = 'none';
+                }
+            });
+            
+            // Update block elements
+            document.querySelectorAll('.english, .hindi').forEach(el => {
+                if (el.classList.contains('english') && body.classList.contains('english')) {
+                    if (el.parentElement.classList.contains('section-title') || 
+                        el.parentElement.classList.contains('about-text') ||
+                        el.parentElement.classList.contains('team-info') ||
+                        el.parentElement.classList.contains('testimonial-text') ||
+                        el.parentElement.classList.contains('info-content') ||
+                        el.parentElement.classList.contains('feature-card')) {
+                        el.style.display = 'block';
+                    }
+                } else if (el.classList.contains('hindi') && body.classList.contains('hindi')) {
+                    if (el.parentElement.classList.contains('section-title') || 
+                        el.parentElement.classList.contains('about-text') ||
+                        el.parentElement.classList.contains('team-info') ||
+                        el.parentElement.classList.contains('testimonial-text') ||
+                        el.parentElement.classList.contains('info-content') ||
+                        el.parentElement.classList.contains('feature-card')) {
+                        el.style.display = 'block';
+                    }
+                }
+            });
+            
+            // Force a reflow to ensure proper display
+            document.body.offsetHeight;
+        });
 
-        document.getElementById('submitBtn').addEventListener('click', async function(e) {
+        // Mobile Menu Toggle with Accessibility
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+            mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+        
+        // Form Validation and Submission
+        const inquiryForm = document.getElementById('inquiryForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const formSpinner = document.getElementById('formSpinner');
+        const formSuccess = document.getElementById('formSuccess');
+        
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            const inputElement = document.getElementById(elementId.replace('Error', ''));
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+            inputElement.classList.add('error');
+            return false;
+        }
+        
+        function hideError(elementId) {
+            const errorElement = document.getElementById(elementId);
+            const inputElement = document.getElementById(elementId.replace('Error', ''));
+            errorElement.style.display = 'none';
+            inputElement.classList.remove('error');
+            return true;
+        }
+        
+        function validatePhone(phone) {
+            const phoneRegex = /^[0-9]{10}$/;
+            return phoneRegex.test(phone);
+        }
+        
+        function validateEmail(email) {
+            if (!email) return true; // Email is optional
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        inquiryForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            if (!validateForm()) {
-                return;
-            }
-
-            // Check if payment method is selected
-            const upiSelected = document.getElementById('upiOption').classList.contains('selected');
-            const cashSelected = document.getElementById('cashOption').classList.contains('selected');
+            // Reset previous errors
+            hideError('nameError');
+            hideError('phoneError');
+            hideError('emailError');
+            hideError('courseError');
+            formSuccess.style.display = 'none';
             
-            if (!upiSelected && !cashSelected) {
-                alert('कृपया भुगतान का तरीका चुनें');
-                return;
-            }
-
-            await submitToGoogleSheets();
-        });
-
-        // File preview functionality
-        document.getElementById('photo').addEventListener('change', function(e) {
-            previewFile(e.target, 'photoPreview');
-        });
-
-        document.getElementById('aadharCard').addEventListener('change', function(e) {
-            previewFile(e.target, 'aadharPreview');
-        });
-
-        document.getElementById('marksheet').addEventListener('change', function(e) {
-            previewFile(e.target, 'marksheetPreview');
-        });
-
-        function previewFile(input, previewId) {
-            const preview = document.getElementById(previewId);
-            preview.innerHTML = '';
+            // Get form values
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const course = document.getElementById('course').value;
+            const message = document.getElementById('message').value.trim();
             
-            if (input.files && input.files[0]) {
-                const file = input.files[0];
-                if (file.type.startsWith('image/')) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        const img = document.createElement('img');
-                        img.src = e.target.result;
-                        preview.appendChild(img);
-                        
-                        // Show file size
-                        const fileSize = (file.size / 1024).toFixed(2);
-                        const sizeInfo = document.createElement('div');
-                        sizeInfo.innerHTML = `File size: ${fileSize} KB`;
-                        preview.appendChild(sizeInfo);
-                    }
-                    reader.readAsDataURL(file);
-                } else {
-                    preview.innerHTML = `<div>${file.name}</div>`;
-                }
-            }
-        }
-
-        function validateForm() {
-            const requiredFields = ['fullName', 'mobile', 'whatsapp', 'course', 'batchTime', 'address', 'aadhar', 'gender'];
             let isValid = true;
             
-            for (let field of requiredFields) {
-                const element = document.getElementById(field);
-                if (!element.value.trim()) {
-                    isValid = false;
-                    element.style.borderColor = 'red';
-                } else {
-                    element.style.borderColor = '#ddd';
-                }
+            // Validate name
+            if (!name) {
+                const errorMsg = body.classList.contains('hindi') 
+                    ? 'कृपया अपना पूरा नाम दर्ज करें' 
+                    : 'Please enter your full name';
+                showError('nameError', errorMsg);
+                isValid = false;
             }
-
-            // Aadhar validation - exactly 12 digits
-            const aadhar = document.getElementById('aadhar').value;
-            if (aadhar.length !== 12) {
-                alert('कृपया 12 अंकों का आधार नंबर दर्ज करें');
-                document.getElementById('aadhar').style.borderColor = 'red';
-                return false;
+            
+            // Validate phone
+            if (!phone) {
+                const errorMsg = body.classList.contains('hindi') 
+                    ? 'कृपया अपना फोन नंबर दर्ज करें' 
+                    : 'Please enter your phone number';
+                showError('phoneError', errorMsg);
+                isValid = false;
+            } else if (!validatePhone(phone)) {
+                const errorMsg = body.classList.contains('hindi') 
+                    ? 'कृपया एक मान्य 10-अंकीय फोन नंबर दर्ज करें' 
+                    : 'Please enter a valid 10-digit phone number';
+                showError('phoneError', errorMsg);
+                isValid = false;
             }
-
-            // Email validation if provided
-            const email = document.getElementById('email').value;
+            
+            // Validate email (optional)
             if (email && !validateEmail(email)) {
-                alert('कृपया सही ईमेल आईडी दर्ज करें');
-                document.getElementById('email').style.borderColor = 'red';
-                return false;
-            }
-
-            // File validation
-            const photoFile = document.getElementById('photo');
-            const aadharFile = document.getElementById('aadharCard');
-            
-            if (photoFile.files.length === 0) {
+                const errorMsg = body.classList.contains('hindi') 
+                    ? 'कृपया एक मान्य ईमेल पता दर्ज करें' 
+                    : 'Please enter a valid email address';
+                showError('emailError', errorMsg);
                 isValid = false;
-                photoFile.style.borderColor = 'red';
-            } else {
-                photoFile.style.borderColor = '#ddd';
             }
             
-            if (aadharFile.files.length === 0) {
+            // Validate course
+            if (!course) {
+                const errorMsg = body.classList.contains('hindi') 
+                    ? 'कृपया एक कोर्स चुनें' 
+                    : 'Please select a course';
+                showError('courseError', errorMsg);
                 isValid = false;
-                aadharFile.style.borderColor = 'red';
-            } else {
-                aadharFile.style.borderColor = '#ddd';
-            }
-
-            const mobile = document.getElementById('mobile').value;
-            const whatsapp = document.getElementById('whatsapp').value;
-            
-            if (!/^\d{10}$/.test(mobile)) {
-                alert('कृपया 10 अंकों का मोबाइल नंबर दर्ज करें।');
-                document.getElementById('mobile').style.borderColor = 'red';
-                return false;
             }
             
-            if (!/^\d{10}$/.test(whatsapp)) {
-                alert('कृपया 10 अंकों का WhatsApp नंबर दर्ज करें।');
-                document.getElementById('whatsapp').style.borderColor = 'red';
-                return false;
-            }
-
             if (!isValid) {
-                alert('कृपया सभी आवश्यक फील्ड्स भरें (जिनके आगे * लगा है)');
-                return false;
+                return;
             }
-
-            return isValid;
-        }
-
-        function validateEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(email);
-        }
-
-        async function submitToGoogleSheets() {
-            console.log('=== FORM SUBMISSION STARTED ===');
-            document.getElementById('loadingSpinner').style.display = 'block';
-            document.getElementById('submitBtn').disabled = true;
-            document.getElementById('submitBtn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
-
-            try {
-                const formData = getFormData();
-                
-                // Get payment method
-                const paymentMethod = document.getElementById('upiOption').classList.contains('selected') ? 'UPI' : 'Cash';
-                const transactionId = document.getElementById('transactionId').value;
-                
-                const submissionData = {
-                    timestamp: new Date().toLocaleString('hi-IN'),
-                    fullName: formData.fullName,
-                    fatherName: formData.fatherName,
-                    mobile: formData.mobile,
-                    whatsapp: formData.whatsapp,
-                    gender: formData.gender,
-                    dob: formData.dob,
-                    address: formData.address,
-                    aadhar: formData.aadhar,
-                    email: formData.email,
-                    course: formData.course,
-                    batchTime: formData.batchTime,
-                    paymentMethod: paymentMethod,
-                    transactionId: transactionId,
-                    registrationFee: '99'
-                };
-
-                console.log('📤 Sending data to Google Sheets:', submissionData);
-                console.log('📮 Google Script URL:', GOOGLE_SCRIPT_URL);
-
-                // ✅ SIMPLE FETCH - No complex options
-                const response = await fetch(GOOGLE_SCRIPT_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: new URLSearchParams(submissionData)
-                });
-
-                console.log('📥 Response status:', response.status);
-                console.log('📥 Response ok:', response.ok);
-
-                if (!response.ok) {
-                    throw new Error(`Server returned ${response.status}: ${response.statusText}`);
-                }
-
-                const resultText = await response.text();
-                console.log('📥 Raw response text:', resultText);
-
-                let result;
-                try {
-                    result = JSON.parse(resultText);
-                } catch (parseError) {
-                    console.error('❌ JSON parse error:', parseError);
-                    throw new Error('Server returned invalid JSON: ' + resultText);
-                }
-
-                console.log('📥 Parsed response:', result);
-
-                if (result.status === 'success') {
-                    console.log('✅ Server confirmed success');
-                    submissionData.studentId = result.studentId;
-                    showSuccessPage(submissionData);
-                    showStatus('✅ Data successfully saved to Google Sheets!', 'success');
-                } else {
-                    throw new Error(result.message || 'Server returned error status');
-                }
-
-            } catch (error) {
-                console.error('❌ FORM SUBMISSION FAILED:', error);
-                
-                // Show detailed error info
-                document.getElementById('debugInfo').style.display = 'block';
-                document.getElementById('debugInfo').innerHTML = `
-                    <strong>Error Details:</strong><br>
-                    <strong>Message:</strong> ${error.message}<br>
-                    <strong>Time:</strong> ${new Date().toLocaleString()}<br>
-                    <strong>Script URL:</strong> ${GOOGLE_SCRIPT_URL}<br>
-                    <strong>Check browser console (F12) for full details</strong>
-                `;
-                
-                // Fallback - Show success page anyway with local ID
-                const formData = getFormData();
-                const currentYear = new Date().getFullYear();
-                let fallbackCounter = parseInt(localStorage.getItem('fallbackCounter') || '2000');
-                fallbackCounter++;
-                const tempId = `GCEI-${currentYear}-${fallbackCounter}`;
-                localStorage.setItem('fallbackCounter', fallbackCounter.toString());
-                
-                formData.studentId = tempId;
-                formData.timestamp = new Date().toLocaleString('hi-IN');
-                
-                showSuccessPage(formData);
-                showStatus('⚠️ Form submitted (local fallback). Check connection.', 'error');
-                
-                console.log('🔄 Using fallback ID:', tempId);
-            } finally {
-                resetLoadingState();
+            
+            // Show loading spinner
+            submitBtn.style.display = 'none';
+            formSpinner.style.display = 'block';
+            
+            // Simulate API call delay
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            
+            // Create WhatsApp message based on language
+            let whatsappMessage;
+            if (body.classList.contains('hindi')) {
+                whatsappMessage = `🎓 *गुरु कंप्यूटर एजुकेशन इंस्टीट्यूट - प्रवेश पूछताछ*%0A%0A` +
+                                  `*नाम:* ${name}%0A` +
+                                  `*फोन:* ${phone}%0A` +
+                                  (email ? `*ईमेल:* ${email}%0A` : '') +
+                                  `*रुचि वाला कोर्स:* ${course}%0A` +
+                                  (message ? `*संदेश:* ${message}%0A` : '') +
+                                  `%0Aमैं इस कोर्स और प्रवेश प्रक्रिया के बारे में अधिक जानना चाहूंगा।`;
+            } else {
+                whatsappMessage = `🎓 *Guru Computer Education Institute - Admission Inquiry*%0A%0A` +
+                                  `*Name:* ${name}%0A` +
+                                  `*Phone:* ${phone}%0A` +
+                                  (email ? `*Email:* ${email}%0A` : '') +
+                                  `*Course Interested In:* ${course}%0A` +
+                                  (message ? `*Message:* ${message}%0A` : '') +
+                                  `%0AI would like to know more about this course and admission process.`;
             }
-        }
-
-        function showSuccessPage(formData) {
-            document.getElementById('admissionForm').style.display = 'none';
-            document.getElementById('successMessage').style.display = 'block';
             
-            document.getElementById('studentIdDisplay').textContent = `Your Student ID: ${formData.studentId}`;
-            document.getElementById('successFullName').textContent = formData.fullName;
-            document.getElementById('successCourse').textContent = formData.course;
-            document.getElementById('successBatchTime').textContent = formData.batchTime;
-            document.getElementById('successMobile').textContent = formData.mobile;
-            document.getElementById('submissionDate').textContent = formData.timestamp;
+            // Reset form
+            inquiryForm.reset();
             
-            resetLoadingState();
-            window.scrollTo(0, 0);
+            // Hide spinner and show success message
+            formSpinner.style.display = 'none';
+            formSuccess.style.display = 'block';
             
+            // Redirect to WhatsApp after delay
             setTimeout(() => {
-                document.querySelector('.success-icon').style.transform = 'scale(1.1)';
-                setTimeout(() => {
-                    document.querySelector('.success-icon').style.transform = 'scale(1)';
-                }, 300);
-            }, 1000);
-        }
-
-        function resetLoadingState() {
-            document.getElementById('loadingSpinner').style.display = 'none';
-            document.getElementById('submitBtn').disabled = false;
-            document.getElementById('submitBtn').innerHTML = '<i class="fas fa-paper-plane"></i> Submit Admission Form';
-        }
-
-        function getFormData() {
-            return {
-                fullName: document.getElementById('fullName').value,
-                fatherName: document.getElementById('fatherName').value,
-                mobile: document.getElementById('mobile').value,
-                whatsapp: document.getElementById('whatsapp').value,
-                gender: document.getElementById('gender').value,
-                dob: document.getElementById('dob').value,
-                address: document.getElementById('address').value,
-                aadhar: document.getElementById('aadhar').value,
-                email: document.getElementById('email').value,
-                course: document.getElementById('course').value,
-                batchTime: document.getElementById('batchTime').value
-            };
-        }
-
-        // PDF Download
-        document.getElementById('downloadPdfBtn').addEventListener('click', function() {
-            generateAndDownloadPDF();
+                window.open(`https://wa.me/919244240484?text=${whatsappMessage}`, '_blank');
+                submitBtn.style.display = 'inline-block';
+                formSuccess.style.display = 'none';
+            }, 2000);
         });
-
-        function generateAndDownloadPDF() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            
-            const studentName = document.getElementById('successFullName').textContent;
-            const studentId = document.getElementById('studentIdDisplay').textContent.replace('Your Student ID: ', '');
-            const course = document.getElementById('successCourse').textContent;
-            const batchTime = document.getElementById('successBatchTime').textContent;
-            const mobile = document.getElementById('successMobile').textContent;
-            const submissionDate = document.getElementById('submissionDate').textContent;
-            
-            // Set font and colors
-            doc.setFont("helvetica", "bold");
-            doc.setFontSize(20);
-            doc.setTextColor(26, 42, 108);
-            
-            // Institute Name
-            doc.text("Guru Computer Education Institute", 105, 20, { align: "center" });
-            
-            doc.setFontSize(12);
-            doc.setTextColor(0, 0, 0);
-            doc.setFont("helvetica", "normal");
-            doc.text("Near Police Station, Dagori Road, Bilha, Bilaspur (C.G.)", 105, 28, { align: "center" });
-            doc.text("Phone: 9244240484", 105, 34, { align: "center" });
-            
-            // Title
-            doc.setFontSize(18);
-            doc.setFont("helvetica", "bold");
-            doc.setTextColor(26, 42, 108);
-            doc.text("ADMISSION FORM RECEIPT", 105, 50, { align: "center" });
-            
-            // Student Information
-            doc.setFontSize(12);
-            doc.setFont("helvetica", "bold");
-            doc.text("Student ID:", 20, 70);
-            doc.text("Full Name:", 20, 80);
-            doc.text("Course:", 20, 90);
-            doc.text("Batch Time:", 20, 100);
-            doc.text("Mobile:", 20, 110);
-            doc.text("Submission Date:", 20, 120);
-            
-            doc.setFont("helvetica", "normal");
-            doc.text(studentId, 70, 70);
-            doc.text(studentName, 70, 80);
-            doc.text(course, 70, 90);
-            doc.text(batchTime, 70, 100);
-            doc.text(mobile, 70, 110);
-            doc.text(submissionDate, 70, 120);
-            
-            // Payment Information
-            doc.setFont("helvetica", "bold");
-            doc.text("Registration Fee: ₹99", 20, 140);
-            
-            // Instructions
-            doc.setFontSize(10);
-            doc.text("Next Steps:", 20, 160);
-            doc.text("1. Pay ₹99 registration fee (UPI or at institute)", 20, 170);
-            doc.text("2. Our team will contact you within 24 hours", 20, 180);
-            doc.text("3. Bring original documents to institute", 20, 190);
-            doc.text("4. Complete admission process", 20, 200);
-            doc.text("5. Confirm batch start date", 20, 210);
-            
-            // Footer
-            doc.setFontSize(12);
-            doc.setFont("helvetica", "bold");
-            doc.text("Guru Ke Saath Gyan, Safalta Ki Pehchan", 105, 240, { align: "center" });
-            
-            // Save the PDF
-            doc.save(`GCEI_Admission_${studentId}.pdf`);
-        }
-
-        // WhatsApp button functionality
-        document.getElementById('whatsappBtn').addEventListener('click', function() {
-            const studentName = document.getElementById('successFullName').textContent;
-            const studentId = document.getElementById('studentIdDisplay').textContent.replace('Your Student ID: ', '');
-            const course = document.getElementById('successCourse').textContent;
-            const batchTime = document.getElementById('successBatchTime').textContent;
-            const mobile = document.getElementById('successMobile').textContent;
-            
-            const message = `Namaste! Main ${studentName} hun. Maine Guru Computer Education Institute mein ${course} ke liye admission form submit kiya hai. Batch timing: ${batchTime}. Kripya meri admission process complete karne mein madad karein.\n\nForm details:\n- Name: ${studentName}\n- Student ID: ${studentId}\n- Course: ${course}\n- Batch: ${batchTime}\n- Mobile: ${mobile}\n\nPlease download the PDF form and send it via WhatsApp`;
-            
-            const whatsappUrl = `https://wa.me/919244240484?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-        });
-
-        // New Form button functionality
-        document.getElementById('newFormBtn').addEventListener('click', function() {
-            if(confirm('क्या आप एक नया एडमिशन फॉर्म भरना चाहते हैं?')) {
-                location.reload();
+        
+        // Real-time validation
+        document.getElementById('phone').addEventListener('input', function(e) {
+            const phone = e.target.value.replace(/\D/g, '');
+            e.target.value = phone;
+            if (phone && !validatePhone(phone)) {
+                const errorMsg = body.classList.contains('hindi') 
+                    ? 'कृपया एक मान्य 10-अंकीय फोन नंबर दर्ज करें' 
+                    : 'Please enter a valid 10-digit phone number';
+                showError('phoneError', errorMsg);
+            } else {
+                hideError('phoneError');
             }
         });
-
-        // Set maximum date for DOB (minimum age 10 years)
-        const dobInput = document.getElementById('dob');
-        const today = new Date();
-        const maxDate = new Date(today.getFullYear() - 10, today.getMonth(), today.getDate());
-        dobInput.max = maxDate.toISOString().split('T')[0];
+        
+        document.getElementById('email').addEventListener('blur', function(e) {
+            const email = e.target.value.trim();
+            if (email && !validateEmail(email)) {
+                const errorMsg = body.classList.contains('hindi') 
+                    ? 'कृपया एक मान्य ईमेल पता दर्ज करें' 
+                    : 'Please enter a valid email address';
+                showError('emailError', errorMsg);
+            } else {
+                hideError('emailError');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update URL without page reload
+                    history.pushState(null, null, targetId);
+                }
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('mainHeader');
+            if(window.scrollY > 100) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+            
+            // Show/hide back to top button
+            const backToTop = document.getElementById('backToTop');
+            if(window.scrollY > 500) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        
+        // Testimonial slider
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial-card');
+        const dots = document.querySelectorAll('.testimonial-dot');
+        
+        function showTestimonial(index) {
+            testimonials.forEach((testimonial, i) => {
+                testimonial.classList.remove('active');
+                dots[i].classList.remove('active');
+                if(i === index) {
+                    testimonial.classList.add('active');
+                    dots[i].classList.add('active');
+                }
+            });
+            currentTestimonial = index;
+        }
+        
+        // Add click events to dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showTestimonial(index);
+            });
+        });
+        
+        // Auto-rotate testimonials
+        let testimonialInterval = setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }, 5000);
+        
+        // Pause auto-rotation on hover
+        const testimonialSlider = document.querySelector('.testimonials-slider');
+        testimonialSlider.addEventListener('mouseenter', () => {
+            clearInterval(testimonialInterval);
+        });
+        
+        testimonialSlider.addEventListener('mouseleave', () => {
+            testimonialInterval = setInterval(() => {
+                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                showTestimonial(currentTestimonial);
+            }, 5000);
+        });
+        
+        // Initialize first testimonial
+        showTestimonial(0);
+        
+        // Image gallery modal
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const closeModal = document.getElementById('closeModal');
+        
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.addEventListener('click', () => {
+                modalImage.src = img.src;
+                modalImage.alt = img.alt;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        modal.addEventListener('click', (e) => {
+            if(e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Escape key to close modal
+        document.addEventListener('keydown', (e) => {
+            if(e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Lazy loading for images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src || img.src;
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+            
+            document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+        
+        // Print functionality
+        window.addEventListener('beforeprint', () => {
+            document.querySelectorAll('.floating-buttons, .back-to-top, .mobile-menu-btn, .language-switcher').forEach(el => {
+                el.style.display = 'none';
+            });
+        });
+        
+        // Reduced motion preference
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.querySelectorAll('*').forEach(el => {
+                el.style.animationDuration = '0.01ms';
+                el.style.animationIterationCount = '1';
+                el.style.transitionDuration = '0.01ms';
+            });
+        }
+        
+        // Service Worker registration (for PWA capabilities)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(error => {
+                    console.log('ServiceWorker registration failed:', error);
+                });
+            });
+        }
+        
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            // Set current year in footer
+            document.querySelector('.footer-bottom p').innerHTML = 
+                document.querySelector('.footer-bottom p').innerHTML.replace('2024', new Date().getFullYear());
+            
+            // Add focus styles for keyboard navigation
+            document.addEventListener('keyup', (e) => {
+                if (e.key === 'Tab') {
+                    document.documentElement.classList.add('keyboard-nav');
+                }
+            });
+            
+            document.addEventListener('mousedown', () => {
+                document.documentElement.classList.remove('keyboard-nav');
+            });
+            
+            // Initialize language display
+            document.querySelectorAll('.hindi').forEach(el => {
+                el.style.display = 'none';
+            });
+        });
+        
+        // Performance optimization
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                // Handle resize events
+            }, 250);
+        });
     </script>
 </body>
 </html>
