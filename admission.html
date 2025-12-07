@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission - Guru Computer Education Institute</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Same base styles as index.html */
+        :root {
+            --primary-color: #004d40;
+            --secondary-color: #00796b;
+            --accent-color: #ff9800;
+            --light-color: #e0f2f1;
+            --dark-color: #00251a;
+            --text-color: #333;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Header & Navigation - Same as index.html */
+        .top-bar {
+            background: var(--dark-color);
+            color: var(--white);
+            padding: 10px 0;
+            font-size: 14px;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-info span {
+            margin-right: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            margin-left: 15px;
+            font-size: 16px;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .main-nav {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            margin: 0;
+            color: var(--primary-color);
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            margin: 0;
+            color: var(--secondary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 5px;
+            list-style: none;
+        }
+
+        .nav-menu > li {
+            position: relative;
+        }
+
+        .nav-menu > li > a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 10px 15px;
+            color: var(--text-color);
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .nav-menu > li > a:hover,
+        .nav-menu > li > a.active {
+            background: var(--light-color);
+            color: var(--primary-color);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .call-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            background: var(--secondary-color);
+            color: var(--white);
+            border-radius: 25px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .call-btn:hover {
+            background: var(--primary-color);
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            background: var(--dark-color);
+            transform: translateY(-2px);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        /* Page Hero */
+        .page-hero {
+            background: linear-gradient(rgba(0, 77, 64, 0.8), rgba(0, 77, 64, 0.9));
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Admission Process */
+        .admission-process {
+            background: var(--light-color);
+        }
+
+        .process-steps {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .process-step {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* Admission Form */
+        .admission-form-section {
+            background: var(--white);
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(0, 77, 64, 0.1);
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            background: var(--white);
+            cursor: pointer;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover {
+            background: var(--dark-color);
+            transform: translateY(-2px);
+        }
+
+        /* Required Documents */
+        .documents-section {
+            background: #f9f9f9;
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .document-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .document-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .document-icon {
+            font-size: 40px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        /* Fee Structure */
+        .fee-structure {
+            background: var(--white);
+        }
+
+        .fee-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .fee-table th {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 15px;
+            text-align: left;
+        }
+
+        .fee-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .fee-table tr:hover {
+            background: var(--light-color);
+        }
+
+        /* Footer - Same as index.html */
+        .main-footer {
+            background: var(--dark-color);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo .logo-icon {
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+        }
+
+        .footer-logo h3 {
+            color: var(--white);
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .footer-logo p {
+            color: #aaa;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .contact-info i {
+            color: var(--accent-color);
+            margin-top: 3px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .top-bar-content {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 120px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 120px);
+                background: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                transition: var(--transition);
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-actions {
+                display: none;
+            }
+
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone"></i> 92442 40484</span>
+                    <span><i class="fas fa-envelope"></i> info.gceiofficial@gmail.com</span>
+                    <span><i class="fas fa-clock"></i> Mon-Sat: 9AM - 7PM</span>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/gceiofficial/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/gceiofficial/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/919244240484" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.youtube.com/channel/UCebEVcrSsWWxWr2qVGRLk6w" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="nav-container">
+                <!-- Logo -->
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">G</div>
+                    <div class="logo-text">
+                        <h1>Guru Computer</h1>
+                        <p>Education Institute</p>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <ul class="nav-menu">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="courses.html"><i class="fas fa-graduation-cap"></i> Courses</a></li>
+                    <li><a href="admission.html" class="active"><i class="fas fa-user-graduate"></i> Admission</a></li>
+                    <li><a href="contact.html"><i class="fas fa-address-book"></i> Contact</a></li>
+                </ul>
+
+                <!-- Call to Action -->
+                <div class="nav-actions">
+                    <a href="tel:9244240484" class="call-btn">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>Call Now</span>
+                    </a>
+                    <a href="#admission-form" class="btn-primary">
+                        <i class="fas fa-user-plus"></i>
+                        Apply Now
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-toggle" id="mobileToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Admission Process</h1>
+            <p>Join Guru Computer Education Institute for a successful career</p>
+        </div>
+    </section>
+
+    <!-- Admission Process -->
+    <section class="admission-process">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 50px;">Admission Procedure</h2>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Visit Institute</h3>
+                        <p>Visit our institute for counseling and course details. Our counselors will guide you in choosing the right course.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Select Course</h3>
+                        <p>Choose the course that matches your career goals and educational background.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Fill Admission Form</h3>
+                        <p>Complete the admission form with required details either online or at institute.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Submit Documents</h3>
+                        <p>Submit required documents and pay the admission fees.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Start Learning</h3>
+                        <p>Begin your classes as per the batch timing and start your journey towards a successful career.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admission Form -->
+    <section id="admission-form" class="admission-form-section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 50px;">Admission Form</h2>
+            
+            <div class="form-container">
+                <form id="admissionForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Full Name *</label>
+                            <input type="text" class="form-control" id="name" required placeholder="Enter your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Mobile Number *</label>
+                            <input type="tel" class="form-control" id="mobile" required placeholder="10-digit mobile number">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email address">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Select Course *</label>
+                        <select class="form-select" id="course" required>
+                            <option value="">-- Select Course --</option>
+                            <option value="Basic Computer">Basic Computer</option>
+                            <option value="MS Office">MS Office</option>
+                            <option value="Tally Prime GST">Tally Prime GST</option>
+                            <option value="DCA Course">DCA Course</option>
+                            <option value="PGDCA Course">PGDCA Course</option>
+                            <option value="Photoshop">Photoshop</option>
+                            <option value="Canva Design">Canva Design</option>
+                            <option value="AI ChatGPT">AI ChatGPT</option>
+                            <option value="Typing (English/Hindi)">Typing (English/Hindi)</option>
+                            <option value="Internet & Email">Internet & Email</option>
+                            <option value="CCC Course">CCC Course</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Educational Qualification</label>
+                            <input type="text" class="form-control" id="qualification" placeholder="e.g. 10th, 12th, Graduate">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Preferred Batch</label>
+                            <select class="form-select" id="batch">
+                                <option value="">-- Select Batch --</option>
+                                <option value="Morning (9AM-12PM)">Morning (9AM-12PM)</option>
+                                <option value="Evening (4PM-7PM)">Evening (4PM-7PM)</option>
+                                <option value="Weekend (10AM-4PM)">Weekend (10AM-4PM)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Message / Query</label>
+                        <textarea class="form-control" id="message" rows="4" placeholder="Any specific requirements or questions..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Submit Admission Form
+                    </button>
+                    
+                    <p style="text-align: center; margin-top: 15px; font-size: 14px; color: #666;">
+                        * हम आपसे संपर्क करेंगे और आगे की प्रक्रिया के बारे में बताएंगे।
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Required Documents -->
+    <section class="documents-section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 50px;">Required Documents</h2>
+            
+            <div class="documents-grid">
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <h3>ID Proof</h3>
+                    <p>Aadhar Card, Voter ID, or any Government ID</p>
+                </div>
+                
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Educational Certificates</h3>
+                    <p>Last qualification marksheet & certificate</p>
+                </div>
+                
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>Passport Size Photos</h3>
+                    <p>2 recent passport size photographs</p>
+                </div>
+                
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <h3>Admission Form</h3>
+                    <p>Duly filled admission form</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fee Structure -->
+    <section class="fee-structure">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 50px;">Course Fee Structure</h2>
+            
+            <table class="fee-table">
+                <thead>
+                    <tr>
+                        <th>Course Name</th>
+                        <th>Duration</th>
+                        <th>Fees</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Basic Computer</td>
+                        <td>2 Months</td>
+                        <td>₹3,000</td>
+                    </tr>
+                    <tr>
+                        <td>MS Office</td>
+                        <td>3 Months</td>
+                        <td>₹4,500</td>
+                    </tr>
+                    <tr>
+                        <td>Tally Prime GST</td>
+                        <td>3 Months</td>
+                        <td>₹5,000</td>
+                    </tr>
+                    <tr>
+                        <td>DCA Course</td>
+                        <td>6 Months</td>
+                        <td>₹8,000</td>
+                    </tr>
+                    <tr>
+                        <td>PGDCA Course</td>
+                        <td>1 Year</td>
+                        <td>₹12,000</td>
+                    </tr>
+                    <tr>
+                        <td>Photoshop</td>
+                        <td>2 Months</td>
+                        <td>₹4,000</td>
+                    </tr>
+                    <tr>
+                        <td>Canva Design</td>
+                        <td>1 Month</td>
+                        <td>₹3,000</td>
+                    </tr>
+                    <tr>
+                        <td>AI ChatGPT</td>
+                        <td>1 Month</td>
+                        <td>₹3,500</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div style="margin-top: 30px; padding: 20px; background: var(--light-color); border-radius: 10px;">
+                <h3 style="color: var(--primary-color); margin-bottom: 15px;">📢 Special Offers:</h3>
+                <ul style="list-style: none;">
+                    <li style="padding: 5px 0;"><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 10px;"></i> 10% Discount on Admission This Week</li>
+                    <li style="padding: 5px 0;"><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 10px;"></i> Group Discount Available (3+ Students)</li>
+                    <li style="padding: 5px 0;"><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 10px;"></i> Installment Facility Available</li>
+                    <li style="padding: 5px 0;"><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 10px;"></i> Free Study Material Included</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <div class="logo-icon">G</div>
+                        <div class="logo-text">
+                            <h3>Guru Computer</h3>
+                            <p>Education Institute</p>
+                        </div>
+                    </div>
+                    <p>Providing quality computer education since 2015 in Bilha, Bilaspur (C.G.)</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="admission.html">Admission</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Near Police Station, Dagori Road, Bilha, Bilaspur (C.G.)</li>
+                        <li><i class="fas fa-phone"></i> 92442 40484</li>
+                        <li><i class="fas fa-envelope"></i> info.gceiofficial@gmail.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 9AM - 7PM</li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Batch Timings</h4>
+                    <ul>
+                        <li>Morning: 9:00 AM - 12:00 PM</li>
+                        <li>Evening: 4:00 PM - 7:00 PM</li>
+                        <li>Weekend: 10:00 AM - 4:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Guru Computer Education Institute. All rights reserved.</p>
+                <p>Designed with <i class="fas fa-heart"></i> for quality education</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (mobileToggle && navMenu) {
+            mobileToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                
+                const spans = this.querySelectorAll('span');
+                if (navMenu.classList.contains('active')) {
+                    spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+            
+            document.addEventListener('click', function(event) {
+                if (!navMenu.contains(event.target) && !mobileToggle.contains(event.target)) {
+                    navMenu.classList.remove('active');
+                    const spans = mobileToggle.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+        }
+
+        // Admission Form Submission
+        const admissionForm = document.getElementById('admissionForm');
+        
+        if (admissionForm) {
+            admissionForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value;
+                const mobile = document.getElementById('mobile').value;
+                const email = document.getElementById('email').value;
+                const course = document.getElementById('course').value;
+                const qualification = document.getElementById('qualification').value;
+                const batch = document.getElementById('batch').value;
+                const message = document.getElementById('message').value;
+                
+                // Validation
+                if (!name || !mobile || !course) {
+                    alert('Please fill all required fields (Name, Mobile, Course)');
+                    return;
+                }
+                
+                if (!/^\d{10}$/.test(mobile)) {
+                    alert('Please enter a valid 10-digit mobile number');
+                    return;
+                }
+                
+                // Create WhatsApp message
+                const whatsappMessage = `🎓 *ADMISSION FORM SUBMISSION* 🎓
+
+*Name:* ${name}
+*Mobile:* ${mobile}
+*Email:* ${email || 'Not provided'}
+*Course:* ${course}
+*Qualification:* ${qualification || 'Not provided'}
+*Batch:* ${batch || 'Not selected'}
+*Message:* ${message || 'No message'}
+
+*Institute:* Guru Computer Education Institute
+*Location:* Bilha, Bilaspur (C.G.)
+*Submission Time:* ${new Date().toLocaleString('hi-IN')}`;
+                
+                // Encode message
+                const encodedMessage = encodeURIComponent(whatsappMessage);
+                const whatsappUrl = `https://wa.me/919244240484?text=${encodedMessage}`;
+                
+                // Open WhatsApp
+                window.open(whatsappUrl, '_blank');
+                
+                // Show success message
+                alert('✅ Admission form submitted successfully!\n\nYou will be redirected to WhatsApp to complete the process.');
+                
+                // Reset form
+                this.reset();
+            });
+        }
+
+        // Smooth scroll to form
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                
+                if (href === '#' || href.startsWith('#!')) return;
+                
+                e.preventDefault();
+                
+                const targetId = href.substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    const headerHeight = document.querySelector('.main-nav').offsetHeight;
+                    const targetPosition = targetElement.offsetTop - headerHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
