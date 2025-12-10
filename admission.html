@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission - Guru Computer Education Institute</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Page Specific CSS -->
+    <style>
+        /* Admission Process */
+        .admission-process {
+            background: var(--light-color);
+        }
+
+        .process-steps {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .process-step {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* Admission Form */
+        .admission-form-section {
+            background: var(--white);
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Required Documents */
+        .documents-section {
+            background: #f9f9f9;
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .document-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .document-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .document-icon {
+            font-size: 40px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        /* Fee Structure */
+        .fee-structure {
+            background: var(--white);
+        }
+
+        .fee-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .fee-table th {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 15px;
+            text-align: left;
+        }
+
+        .fee-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .fee-table tr:hover {
+            background: var(--light-color);
+        }
+
+        .fee-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        @media (max-width: 768px) {
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-step {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .fee-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone"></i> 92442 40484</span>
+                    <span><i class="fas fa-envelope"></i> info.gceiofficial@gmail.com</span>
+                    <span><i class="fas fa-clock"></i> Mon-Sat: 9AM - 7PM</span>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/gceiofficial/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/gceiofficial/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/919244240484" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.youtube.com/channel/UCebEVcrSsWWxWr2qVGRLk6w" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="nav-container">
+                <!-- Logo -->
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">G</div>
+                    <div class="logo-text">
+                        <h1>Guru Computer</h1>
+                        <p>Education Institute</p>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <ul class="nav-menu">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="courses.html"><i class="fas fa-graduation-cap"></i> Courses</a></li>
+                    <li><a href="admission.html" class="active"><i class="fas fa-user-graduate"></i> Admission</a></li>
+                    <li><a href="contact.html"><i class="fas fa-address-book"></i> Contact</a></li>
+                </ul>
+
+                <!-- Call to Action -->
+                <div class="nav-actions">
+                    <a href="tel:9244240484" class="call-btn">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>Call Now</span>
+                    </a>
+                    <a href="#admission-form" class="btn-primary">
+                        <i class="fas fa-user-plus"></i>
+                        Apply Now
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-toggle" id="mobileToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Admission Process</h1>
+            <p>Join Guru Computer Education Institute for a successful career</p>
+        </div>
+    </section>
+
+    <!-- Admission Process -->
+    <section class="admission-process">
+        <div class="container">
+            <h2 class="section-title">Admission Procedure</h2>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Visit Institute</h3>
+                        <p>Visit our institute for counseling and course details. Our counselors will guide you in choosing the right course.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Select Course</h3>
+                        <p>Choose the course that matches your career goals and educational background.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Fill Admission Form</h3>
+                        <p>Complete the admission form with required details either online or at institute.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Submit Documents</h3>
+                        <p>Submit required documents and pay the admission fees.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Start Learning</h3>
+                        <p>Begin your classes as per the batch timing and start your journey towards a successful career.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admission Form -->
+    <section id="admission-form" class="admission-form-section">
+        <div class="container">
+            <h2 class="section-title">Admission Form</h2>
+            
+            <div class="form-container">
+                <form id="admissionForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Full Name *</label>
+                            <input type="text" class="form-control" id="name" required placeholder="Enter your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Mobile Number *</label>
+                            <input type="tel" class="form-control" id="mobile" required placeholder="10-digit mobile number">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email address">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Select Course *</label>
+                        <select class="form-select" id="course" required>
+                            <option value="">-- Select Course --</option>
+                            <option value="Basic Computer">Basic Computer</option>
+                            <option value="MS Office">MS Office</option>
+                            <option value="Tally Prime GST">Tally Prime GST</option>
+                            <option value="DCA Course">DCA Course</option>
+                            <option value="PGDCA Course">PGDCA Course</option>
+                            <option value="Photoshop">Photoshop</option>
+                            <option value="Canva Design">Canva Design</option>
+                            <option value="AI ChatGPT">AI ChatGPT</option>
+                            <option value="Typing (English/Hindi)">Typing (English/Hindi)</option>
+                            <option value="Internet & Email">Internet & Email</option>
+                            <option value="CCC Course">CCC Course</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Educational Qualification</label>
+                            <input type="text" class="form-control" id="qualification" placeholder="e.g. 10th, 12th, Graduate">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Preferred Batch</label>
+                            <select class="form-select" id="batch">
+                                <option value="">-- Select Batch --</option>
+                                <option value="Morning (9AM-12PM)">Morning (9AM-12PM)</option>
+                                <option value="Evening (4PM-7PM)">Evening (4PM-7PM)</option>
+                                <option value="Weekend (10AM-4PM)">Weekend (10AM-4PM)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Message / Query</label>
+                        <textarea class="form-control" id="message" rows="4" placeholder="Any specific requirements or questions..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Submit Admission Form
+                    </button>
+                    
+                    <p style="text-align: center; margin-top: 15px; font-size: 14px; color: #666;">
+                        * हम आपसे संपर्क करेंगे और आगे की प्रक्रिया के बारे में बताएंगे।
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Required Documents -->
+    <section class="documents-section">
+        <div class="container">
+            <h2 class="section-title">Required Documents</h2>
+            
+            <div class="documents-grid">
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <h3>ID Proof</h3>
+                    <p>Aadhar Card, Voter ID, or any Government ID</p>
+                </div>
+                
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Educational Certificates</h3>
+                    <p>Last qualification marksheet & certificate</p>
+                </div>
+                
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>Passport Size Photos</h3>
+                    <p>2 recent passport size photographs</p>
+                </div>
+                
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <h3>Admission Form</h3>
+                    <p>Duly filled admission form</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fee Structure -->
+    <section class="fee-structure">
+        <div class="container">
+            <h2 class="section-title">Course Fee Structure</h2>
+            
+            <table class="fee-table">
+                <thead>
+                    <tr>
+                        <th>Course Name</th>
+                        <th>Duration</th>
+                        <th>Fees</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Basic Computer</td>
+                        <td>2 Months</td>
+                        <td>₹3,000</td>
+                    </tr>
+                    <tr>
+                        <td>MS Office</td>
+                        <td>3 Months</td>
+                        <td>₹4,500</td>
+                    </tr>
+                    <tr>
+                        <td>Tally Prime GST</td>
+                        <td>3 Months</td>
+                        <td>₹5,000</td>
+                    </tr>
+                    <tr>
+                        <td>DCA Course</td>
+                        <td>6 Months</td>
+                        <td>₹8,000</td>
+                    </tr>
+                    <tr>
+                        <td>PGDCA Course</td>
+                        <td>1 Year</td>
+                        <td>₹12,000</td>
+                    </tr>
+                    <tr>
+                        <td>Photoshop</td>
+                        <td>2 Months</td>
+                        <td>₹4,000</td>
+                    </tr>
+                    <tr>
+                        <td>Canva Design</td>
+                        <td>1 Month</td>
+                        <td>₹3,000</td>
+                    </tr>
+                    <tr>
+                        <td>AI ChatGPT</td>
+                        <td>1 Month</td>
+                        <td>₹3,500</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div style="margin-top: 30px; padding: 20px; background: var(--light-color); border-radius: 10px;">
+                <h3 style="color: var(--primary-color); margin-bottom: 15px;">📢 Special Offers:</h3>
+                <ul style="list-style: none;">
+                    <li style="padding: 5px 0;"><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 10px;"></i> 10% Discount on Admission This Week</li>
+                    <li style="padding: 5px 0;"><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 10px;"></i> Group Discount Available (3+ Students)</li>
+                    <li style="padding: 5px 0;"><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 10px;"></i> Installment Facility Available</li>
+                    <li style="padding: 5px 0;"><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 10px;"></i> Free Study Material Included</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <div class="logo-icon">G</div>
+                        <div class="logo-text">
+                            <h3>Guru Computer</h3>
+                            <p>Education Institute</p>
+                        </div>
+                    </div>
+                    <p>Providing quality computer education since 2015 in Bilha, Bilaspur (C.G.)</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/gceiofficial/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/gceiofficial/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/919244240484" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/channel/UCebEVcrSsWWxWr2qVGRLk6w" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="courses.html"><i class="fas fa-chevron-right"></i> Courses</a></li>
+                        <li><a href="admission.html"><i class="fas fa-chevron-right"></i> Admission</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Near Police Station, Dagori Road, Bilha, Bilaspur (C.G.)</li>
+                        <li><i class="fas fa-phone"></i> 92442 40484</li>
+                        <li><i class="fas fa-envelope"></i> info.gceiofficial@gmail.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 9AM - 7PM</li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Batch Timings</h4>
+                    <ul>
+                        <li><i class="far fa-clock"></i> Morning: 7:00 AM - 8:00 AM</li>
+			<li><i class="far fa-clock"></i> Morning: 8:00 AM - 9:00 AM</li>
+			<li><i class="far fa-clock"></i> Morning: 10:00 AM - 11:00 AM</li>
+                        <li><i class="far fa-clock"></i> Evening: 5:00 PM - 6:00 PM</li>
+                        <li><i class="far fa-clock"></i> Weekend: 10:00 AM - 12:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Guru Computer Education Institute. All rights reserved.</p>
+                <p>Designed with <i class="fas fa-heart" style="color: #ff9800;"></i> for quality education</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
